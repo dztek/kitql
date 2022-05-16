@@ -1,5 +1,5 @@
-query Issue($number: Int!) {
-	issue(number: $number) {
-		...issueDetail
+query KitFeedbackIssue($number: Int!) {
+	KitFeedback_issue(number: $number) {
+		...KitFeedback_issueDetail
 	}
 }

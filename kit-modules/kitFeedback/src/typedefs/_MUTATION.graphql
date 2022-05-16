@@ -1,7 +1,7 @@
 extend type Mutation {
-	createComment(fields: CreateCommentFields!): Comment
-	addReaction(fields: AddReactionFields!): Int
-	createIssue(fields: CreateIssueFields!): Issue
-	minimizeComment(fields: MinimizeCommentFields!): Comment
-	updateComment(fields: UpdateCommentFields!): Comment
+	KitFeedback_createComment(fields: KitFeedback_CreateCommentFields!): KitFeedback_Comment
+	KitFeedback_addReaction(fields: KitFeedback_AddReactionFields!): Int
+	KitFeedback_createIssue(fields: KitFeedback_CreateIssueFields!): KitFeedback_Issue
+	KitFeedback_minimizeComment(fields: KitFeedback_MinimizeCommentFields!): KitFeedback_Comment
+	KitFeedback_updateComment(fields: KitFeedback_UpdateCommentFields!): KitFeedback_Comment
 }

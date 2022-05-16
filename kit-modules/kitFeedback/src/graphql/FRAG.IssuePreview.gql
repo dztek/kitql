@@ -1,8 +1,8 @@
-fragment issuePreview on Issue {
+fragment KitFeedback_issuePreview on KitFeedback_Issue {
 	id
 	number
 	titleHTML
 	metadata {
-		...commentDetail
+		...KitFeedback_commentDetail
 	}
 }

@@ -1,12 +1,12 @@
 import { gql } from 'graphql-modules'
 
 export const typeDefs = gql`
-enum IssueState {
+enum KitFeedback_IssueState {
 	OPEN
 	CLOSED
 }
 
-enum Reaction {
+enum KitFeedback_Reaction {
 	CONFUSED
 	EYES
 	HEART
@@ -17,12 +17,12 @@ enum Reaction {
 	THUMBS_UP
 }
 
-input AddReactionFields {
+input KitFeedback_AddReactionFields {
 	subjectID: ID!
-	content: Reaction!
+	content: KitFeedback_Reaction!
 }
 
-type Comment {
+type KitFeedback_Comment {
 	id: ID
 	isMinimized: Boolean
 	isPublic: Boolean
@@ -32,99 +32,99 @@ type Comment {
 	bodyHTML: String
 }
 
-type Comments {
-	nodes: [Comment!]
+type KitFeedback_Comments {
+	nodes: [KitFeedback_Comment!]
 	next: String
 }
 
-input CreateCommentFields {
+input KitFeedback_CreateCommentFields {
 	issueID: ID!
 	body: String!
 }
 
-input UpdateCommentFields {
+input KitFeedback_UpdateCommentFields {
 	commentID: ID!
 	body: String!
 }
 
-input MinimizeCommentFields {
+input KitFeedback_MinimizeCommentFields {
 	commentID: ID!
 }
 
-type Issue {
+type KitFeedback_Issue {
 	id: ID
 	number: Int
 	author: String
 	createdAt: DateTime
 	titleHTML: String
 	bodyHTML: String
-	metadata: Comment
-	comments: Comments
+	metadata: KitFeedback_Comment
+	comments: KitFeedback_Comments
 }
 
-type Issues {
-	nodes: [Issue!]
+type KitFeedback_Issues {
+	nodes: [KitFeedback_Issue!]
 	next: String
 }
 
-input CreateIssueFields {
+input KitFeedback_CreateIssueFields {
 	milestoneId: ID
 	title: String!
 	body: String
 }
 
-input IssueFilters {
+input KitFeedback_IssueFilters {
 	labels: [String]
 	milestoneNumber: String
-	states: [IssueState]
+	states: [KitFeedback_IssueState]
 }
 
-type IssueTemplate {
+type KitFeedback_IssueTemplate {
 	name: String
 	title: String
 	body: String
 }
 
-type Milestone {
+type KitFeedback_Milestone {
 	id: ID!
 	title: String!
 	number: Int
 	description: String
 }
 
-type Milestones {
-	nodes: [Milestone]
+type KitFeedback_Milestones {
+	nodes: [KitFeedback_Milestone]
 	next: String
 }
 
-input MilestoneFilters {
+input KitFeedback_MilestoneFilters {
 	title: String
 }
 
-input Pagination {
+input KitFeedback_Pagination {
 	take: Int!
 	cursor: String
 }
 
-type RepositoryConstants {
-	repositoryID: ID!
-	createIssueLabelID: ID!
-}
-
 extend type Mutation {
-	createComment(fields: CreateCommentFields!): Comment
-	addReaction(fields: AddReactionFields!): Int
-	createIssue(fields: CreateIssueFields!): Issue
-	minimizeComment(fields: MinimizeCommentFields!): Comment
-	updateComment(fields: UpdateCommentFields!): Comment
+	KitFeedback_createComment(fields: KitFeedback_CreateCommentFields!): KitFeedback_Comment
+	KitFeedback_addReaction(fields: KitFeedback_AddReactionFields!): Int
+	KitFeedback_createIssue(fields: KitFeedback_CreateIssueFields!): KitFeedback_Issue
+	KitFeedback_minimizeComment(fields: KitFeedback_MinimizeCommentFields!): KitFeedback_Comment
+	KitFeedback_updateComment(fields: KitFeedback_UpdateCommentFields!): KitFeedback_Comment
 }
 
 extend type Query {
-	repositoryConstants: RepositoryConstants!
-	issue(number: Int!): Issue
-	issues(filters: IssueFilters, pagination: Pagination!): Issues
-	issueTemplate(name: String!): IssueTemplate
-	milestones(filters: MilestoneFilters, pagination: Pagination!): Milestones
+	KitFeedback_issue(number: Int!): KitFeedback_Issue
+	KitFeedback_issues(
+		filters: KitFeedback_IssueFilters
+		pagination: KitFeedback_Pagination!
+	): KitFeedback_Issues
+	KitFeedback_issueTemplate(name: String!): KitFeedback_IssueTemplate
+	KitFeedback_milestones(
+		filters: KitFeedback_MilestoneFilters
+		pagination: KitFeedback_Pagination!
+	): KitFeedback_Milestones
 }
 
 `;

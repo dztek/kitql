@@ -1,4 +1,4 @@
-import type { IssueFilters, Reaction } from '$lib/graphql/_kitql/graphqlTypes';
+import type { KitFeedbackModule } from '../_kitql/moduleTypes';
 import { Injectable, Scope } from 'graphql-modules';
 import 'reflect-metadata';
 import { GithubGraphQL } from '../graphql/github';
@@ -63,7 +63,7 @@ export class DbGithub {
 		owner: string;
 		take: number;
 		cursor?: string;
-		filters?: IssueFilters;
+		filters?: KitFeedbackModule.KitFeedback_IssueFilters;
 	}) => {
 		const graphql = queries.Issues + '\n' + fragments.IssuePreview + '\n' + fragments.CommentDetail;
 		return await this.fetch(graphql, input);
@@ -105,7 +105,10 @@ export class DbGithub {
 		return await this.fetch(graphql, { input });
 	};
 
-	public addReaction = async (input: { subjectId: string; content: Reaction }) => {
+	public addReaction = async (input: {
+		subjectId: string;
+		content: KitFeedbackModule.KitFeedback_Reaction;
+	}) => {
 		const graphql = mutations.AddReaction;
 		return await this.fetch(graphql, { input });
 	};

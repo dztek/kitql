@@ -1,7 +1,10 @@
-query Milestones($filters: MilestoneFilters!, $pagination: Pagination!) {
-	milestones(filters: $filters, pagination: $pagination) {
+query KitFeedbackMilestones(
+	$filters: KitFeedback_MilestoneFilters!
+	$pagination: KitFeedback_Pagination!
+) {
+	KitFeedback_milestones(filters: $filters, pagination: $pagination) {
 		nodes {
-			...milestonePreview
+			...KitFeedback_milestonePreview
 		}
 		next
 	}

@@ -1,4 +1,4 @@
-input AddReactionFields {
+input KitFeedback_AddReactionFields {
 	subjectID: ID!
-	content: Reaction!
+	content: KitFeedback_Reaction!
 }

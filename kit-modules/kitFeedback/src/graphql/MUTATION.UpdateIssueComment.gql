@@ -1,5 +1,5 @@
-mutation UpdateComment($fields: UpdateCommentFields!) {
-	updateComment(fields: $fields) {
-		...commentDetail
+mutation KitFeedbackUpdateComment($fields: KitFeedback_UpdateCommentFields!) {
+	KitFeedback_updateComment(fields: $fields) {
+		...KitFeedback_commentDetail
 	}
 }

@@ -1,4 +1,4 @@
-enum IssueState {
+enum KitFeedback_IssueState {
 	OPEN
 	CLOSED
 }

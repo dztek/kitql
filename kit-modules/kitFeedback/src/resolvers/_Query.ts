@@ -1,4 +1,3 @@
-import type { Issue, Issues, Milestones, RepositoryConstants } from '$graphql/_kitql/graphqlTypes';
 import { KitFeedbackConfigIT } from '..';
 import {
 	resolveGithubIssue,
@@ -10,7 +9,7 @@ import type { KitFeedbackModule } from '../_kitql/moduleTypes';
 
 export const resolvers: KitFeedbackModule.Resolvers = {
 	Query: {
-		milestones: async (_root, args, ctx, _info) => {
+		KitFeedback_milestones: async (_root, args, ctx, _info) => {
 			const Github = ctx.injector.get(DbGithub);
 			const config = ctx.injector.get(KitFeedbackConfigIT);
 			const data = await Github.getMilestones({
@@ -21,13 +20,13 @@ export const resolvers: KitFeedbackModule.Resolvers = {
 				cursor: args.pagination.cursor
 			});
 			const milestones = data?.repository?.milestones;
-			const result: Milestones = {
+			const result: KitFeedbackModule.KitFeedback_Milestones = {
 				nodes: milestones?.nodes?.map((milestone) => resolveGithubMilestone(milestone, config)),
 				next: milestones?.pageInfo?.endCursor
 			};
 			return result;
 		},
-		issueTemplate: async (_root, args, ctx, _info) => {
+		KitFeedback_issueTemplate: async (_root, args, ctx, _info) => {
 			const Github = ctx.injector.get(DbGithub);
 			const config = ctx.injector.get(KitFeedbackConfigIT);
 			const data = await Github.getIssueTemplates({
@@ -35,12 +34,10 @@ export const resolvers: KitFeedbackModule.Resolvers = {
 				owner: config.repository.owner
 			});
 			const templates = data?.repository?.issueTemplates;
-			console.log(templates);
-
 			const result = templates?.find((template) => template.name === args.name);
 			return result;
 		},
-		issues: async (_root, args, ctx, _info) => {
+		KitFeedback_issues: async (_root, args, ctx, _info) => {
 			const Github = ctx.injector.get(DbGithub);
 			const config = ctx.injector.get(KitFeedbackConfigIT);
 			const data = await Github.getIssues({
@@ -51,13 +48,13 @@ export const resolvers: KitFeedbackModule.Resolvers = {
 				filters: args.filters
 			});
 			const issues = data?.repository?.issues;
-			const result: Issues = {
+			const result: KitFeedbackModule.KitFeedback_Issues = {
 				nodes: issues.nodes.map((issue) => resolveGithubIssuePreview(issue, config)),
 				next: issues.pageInfo.endCursor
 			};
 			return result;
 		},
-		issue: async (_root, args, ctx, _info) => {
+		KitFeedback_issue: async (_root, args, ctx, _info) => {
 			const Github = ctx.injector.get(DbGithub);
 			const config = ctx.injector.get(KitFeedbackConfigIT);
 			const data = await Github.getIssue({
@@ -66,7 +63,7 @@ export const resolvers: KitFeedbackModule.Resolvers = {
 				number: args.number
 			});
 			const issue = data?.repository?.issue;
-			const result: Issue = resolveGithubIssue(issue, config);
+			const result: KitFeedbackModule.KitFeedback_Issue = resolveGithubIssue(issue, config);
 			return result;
 		}
 	}

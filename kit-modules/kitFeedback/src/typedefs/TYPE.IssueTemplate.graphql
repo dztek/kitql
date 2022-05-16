@@ -1,4 +1,4 @@
-type IssueTemplate {
+type KitFeedback_IssueTemplate {
 	name: String
 	title: String
 	body: String

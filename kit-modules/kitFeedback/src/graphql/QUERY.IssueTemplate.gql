@@ -1,5 +1,5 @@
-query IssueTemplate($name: String!) {
-	issueTemplate(name: $name) {
-		...issueTemplateDetail
+query KitFeedbackIssueTemplate($name: String!) {
+	KitFeedback_issueTemplate(name: $name) {
+		...KitFeedback_issueTemplateDetail
 	}
 }

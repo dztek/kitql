@@ -23,27 +23,26 @@ if (browser) {
  * ResetAllCaches in One function!
  */
 export function KQL__ResetAllCaches() {
-	KQL_Issue.resetCache();
-	KQL_IssueTemplate.resetCache();
-	KQL_Issues.resetCache();
-	KQL_Milestones.resetCache();
-	KQL_RepositoryConstants.resetCache();
+	KQL_KitFeedbackIssue.resetCache();
+	KQL_KitFeedbackIssueTemplate.resetCache();
+	KQL_KitFeedbackIssues.resetCache();
+	KQL_KitFeedbackMilestones.resetCache();
 }
  
 /* Operations 👇 */
-function KQL_CreateCommentStore() {
-	const operationName = 'KQL_CreateComment';
+function KQL_KitFeedbackCreateCommentStore() {
+	const operationName = 'KQL_KitFeedbackCreateComment';
 	const operationType = ResponseResultType.Mutation;
 
 	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.CreateCommentMutation, Types.CreateCommentMutationVariables>>({...defaultStoreValue, operationName, operationType});
+	const { subscribe, set, update } = writable<RequestResult<Types.KitFeedbackCreateCommentMutation, Types.KitFeedbackCreateCommentMutationVariables>>({...defaultStoreValue, operationName, operationType});
 
 		async function mutateLocal(
-			params?: RequestParameters<Types.CreateCommentMutationVariables>
-		): Promise<RequestResult<Types.CreateCommentMutation, Types.CreateCommentMutationVariables>> {
+			params?: RequestParameters<Types.KitFeedbackCreateCommentMutationVariables>
+		): Promise<RequestResult<Types.KitFeedbackCreateCommentMutation, Types.KitFeedbackCreateCommentMutationVariables>> {
 			let { fetch, variables } = params ?? {};
 
-			const storedVariables = get(KQL_CreateComment).variables;
+			const storedVariables = get(KQL_KitFeedbackCreateComment).variables;
 			variables = variables ?? storedVariables;
 
 			update((c) => {
@@ -51,9 +50,9 @@ function KQL_CreateCommentStore() {
 			});
 
 			// prettier-ignore
-			const res = await kitQLClient.request<Types.CreateCommentMutation, Types.CreateCommentMutationVariables>({
+			const res = await kitQLClient.request<Types.KitFeedbackCreateCommentMutation, Types.KitFeedbackCreateCommentMutationVariables>({
 				skFetch: fetch,
-				document: Types.CreateCommentDocument,
+				document: Types.KitFeedbackCreateCommentDocument,
 				variables, 
 				operationName, 
 				operationType, 
@@ -76,23 +75,23 @@ function KQL_CreateCommentStore() {
 	};
 }
 /**
- * KitQL Svelte Store with the latest `CreateComment` Operation
+ * KitQL Svelte Store with the latest `KitFeedbackCreateComment` Operation
  */
-export const KQL_CreateComment = KQL_CreateCommentStore();
+export const KQL_KitFeedbackCreateComment = KQL_KitFeedbackCreateCommentStore();
 
-function KQL_AddReactionStore() {
-	const operationName = 'KQL_AddReaction';
+function KQL_KitFeedbackAddReactionStore() {
+	const operationName = 'KQL_KitFeedbackAddReaction';
 	const operationType = ResponseResultType.Mutation;
 
 	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.AddReactionMutation, Types.AddReactionMutationVariables>>({...defaultStoreValue, operationName, operationType});
+	const { subscribe, set, update } = writable<RequestResult<Types.KitFeedbackAddReactionMutation, Types.KitFeedbackAddReactionMutationVariables>>({...defaultStoreValue, operationName, operationType});
 
 		async function mutateLocal(
-			params?: RequestParameters<Types.AddReactionMutationVariables>
-		): Promise<RequestResult<Types.AddReactionMutation, Types.AddReactionMutationVariables>> {
+			params?: RequestParameters<Types.KitFeedbackAddReactionMutationVariables>
+		): Promise<RequestResult<Types.KitFeedbackAddReactionMutation, Types.KitFeedbackAddReactionMutationVariables>> {
 			let { fetch, variables } = params ?? {};
 
-			const storedVariables = get(KQL_AddReaction).variables;
+			const storedVariables = get(KQL_KitFeedbackAddReaction).variables;
 			variables = variables ?? storedVariables;
 
 			update((c) => {
@@ -100,9 +99,9 @@ function KQL_AddReactionStore() {
 			});
 
 			// prettier-ignore
-			const res = await kitQLClient.request<Types.AddReactionMutation, Types.AddReactionMutationVariables>({
+			const res = await kitQLClient.request<Types.KitFeedbackAddReactionMutation, Types.KitFeedbackAddReactionMutationVariables>({
 				skFetch: fetch,
-				document: Types.AddReactionDocument,
+				document: Types.KitFeedbackAddReactionDocument,
 				variables, 
 				operationName, 
 				operationType, 
@@ -125,23 +124,23 @@ function KQL_AddReactionStore() {
 	};
 }
 /**
- * KitQL Svelte Store with the latest `AddReaction` Operation
+ * KitQL Svelte Store with the latest `KitFeedbackAddReaction` Operation
  */
-export const KQL_AddReaction = KQL_AddReactionStore();
+export const KQL_KitFeedbackAddReaction = KQL_KitFeedbackAddReactionStore();
 
-function KQL_CreateIssueStore() {
-	const operationName = 'KQL_CreateIssue';
+function KQL_KitFeedbackCreateIssueStore() {
+	const operationName = 'KQL_KitFeedbackCreateIssue';
 	const operationType = ResponseResultType.Mutation;
 
 	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.CreateIssueMutation, Types.CreateIssueMutationVariables>>({...defaultStoreValue, operationName, operationType});
+	const { subscribe, set, update } = writable<RequestResult<Types.KitFeedbackCreateIssueMutation, Types.KitFeedbackCreateIssueMutationVariables>>({...defaultStoreValue, operationName, operationType});
 
 		async function mutateLocal(
-			params?: RequestParameters<Types.CreateIssueMutationVariables>
-		): Promise<RequestResult<Types.CreateIssueMutation, Types.CreateIssueMutationVariables>> {
+			params?: RequestParameters<Types.KitFeedbackCreateIssueMutationVariables>
+		): Promise<RequestResult<Types.KitFeedbackCreateIssueMutation, Types.KitFeedbackCreateIssueMutationVariables>> {
 			let { fetch, variables } = params ?? {};
 
-			const storedVariables = get(KQL_CreateIssue).variables;
+			const storedVariables = get(KQL_KitFeedbackCreateIssue).variables;
 			variables = variables ?? storedVariables;
 
 			update((c) => {
@@ -149,9 +148,9 @@ function KQL_CreateIssueStore() {
 			});
 
 			// prettier-ignore
-			const res = await kitQLClient.request<Types.CreateIssueMutation, Types.CreateIssueMutationVariables>({
+			const res = await kitQLClient.request<Types.KitFeedbackCreateIssueMutation, Types.KitFeedbackCreateIssueMutationVariables>({
 				skFetch: fetch,
-				document: Types.CreateIssueDocument,
+				document: Types.KitFeedbackCreateIssueDocument,
 				variables, 
 				operationName, 
 				operationType, 
@@ -174,23 +173,23 @@ function KQL_CreateIssueStore() {
 	};
 }
 /**
- * KitQL Svelte Store with the latest `CreateIssue` Operation
+ * KitQL Svelte Store with the latest `KitFeedbackCreateIssue` Operation
  */
-export const KQL_CreateIssue = KQL_CreateIssueStore();
+export const KQL_KitFeedbackCreateIssue = KQL_KitFeedbackCreateIssueStore();
 
-function KQL_MinimizeCommentStore() {
-	const operationName = 'KQL_MinimizeComment';
+function KQL_KitFeedbackMinimizeCommentStore() {
+	const operationName = 'KQL_KitFeedbackMinimizeComment';
 	const operationType = ResponseResultType.Mutation;
 
 	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.MinimizeCommentMutation, Types.MinimizeCommentMutationVariables>>({...defaultStoreValue, operationName, operationType});
+	const { subscribe, set, update } = writable<RequestResult<Types.KitFeedbackMinimizeCommentMutation, Types.KitFeedbackMinimizeCommentMutationVariables>>({...defaultStoreValue, operationName, operationType});
 
 		async function mutateLocal(
-			params?: RequestParameters<Types.MinimizeCommentMutationVariables>
-		): Promise<RequestResult<Types.MinimizeCommentMutation, Types.MinimizeCommentMutationVariables>> {
+			params?: RequestParameters<Types.KitFeedbackMinimizeCommentMutationVariables>
+		): Promise<RequestResult<Types.KitFeedbackMinimizeCommentMutation, Types.KitFeedbackMinimizeCommentMutationVariables>> {
 			let { fetch, variables } = params ?? {};
 
-			const storedVariables = get(KQL_MinimizeComment).variables;
+			const storedVariables = get(KQL_KitFeedbackMinimizeComment).variables;
 			variables = variables ?? storedVariables;
 
 			update((c) => {
@@ -198,9 +197,9 @@ function KQL_MinimizeCommentStore() {
 			});
 
 			// prettier-ignore
-			const res = await kitQLClient.request<Types.MinimizeCommentMutation, Types.MinimizeCommentMutationVariables>({
+			const res = await kitQLClient.request<Types.KitFeedbackMinimizeCommentMutation, Types.KitFeedbackMinimizeCommentMutationVariables>({
 				skFetch: fetch,
-				document: Types.MinimizeCommentDocument,
+				document: Types.KitFeedbackMinimizeCommentDocument,
 				variables, 
 				operationName, 
 				operationType, 
@@ -223,23 +222,23 @@ function KQL_MinimizeCommentStore() {
 	};
 }
 /**
- * KitQL Svelte Store with the latest `MinimizeComment` Operation
+ * KitQL Svelte Store with the latest `KitFeedbackMinimizeComment` Operation
  */
-export const KQL_MinimizeComment = KQL_MinimizeCommentStore();
+export const KQL_KitFeedbackMinimizeComment = KQL_KitFeedbackMinimizeCommentStore();
 
-function KQL_UpdateCommentStore() {
-	const operationName = 'KQL_UpdateComment';
+function KQL_KitFeedbackUpdateCommentStore() {
+	const operationName = 'KQL_KitFeedbackUpdateComment';
 	const operationType = ResponseResultType.Mutation;
 
 	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.UpdateCommentMutation, Types.UpdateCommentMutationVariables>>({...defaultStoreValue, operationName, operationType});
+	const { subscribe, set, update } = writable<RequestResult<Types.KitFeedbackUpdateCommentMutation, Types.KitFeedbackUpdateCommentMutationVariables>>({...defaultStoreValue, operationName, operationType});
 
 		async function mutateLocal(
-			params?: RequestParameters<Types.UpdateCommentMutationVariables>
-		): Promise<RequestResult<Types.UpdateCommentMutation, Types.UpdateCommentMutationVariables>> {
+			params?: RequestParameters<Types.KitFeedbackUpdateCommentMutationVariables>
+		): Promise<RequestResult<Types.KitFeedbackUpdateCommentMutation, Types.KitFeedbackUpdateCommentMutationVariables>> {
 			let { fetch, variables } = params ?? {};
 
-			const storedVariables = get(KQL_UpdateComment).variables;
+			const storedVariables = get(KQL_KitFeedbackUpdateComment).variables;
 			variables = variables ?? storedVariables;
 
 			update((c) => {
@@ -247,9 +246,9 @@ function KQL_UpdateCommentStore() {
 			});
 
 			// prettier-ignore
-			const res = await kitQLClient.request<Types.UpdateCommentMutation, Types.UpdateCommentMutationVariables>({
+			const res = await kitQLClient.request<Types.KitFeedbackUpdateCommentMutation, Types.KitFeedbackUpdateCommentMutationVariables>({
 				skFetch: fetch,
-				document: Types.UpdateCommentDocument,
+				document: Types.KitFeedbackUpdateCommentDocument,
 				variables, 
 				operationName, 
 				operationType, 
@@ -272,24 +271,24 @@ function KQL_UpdateCommentStore() {
 	};
 }
 /**
- * KitQL Svelte Store with the latest `UpdateComment` Operation
+ * KitQL Svelte Store with the latest `KitFeedbackUpdateComment` Operation
  */
-export const KQL_UpdateComment = KQL_UpdateCommentStore();
+export const KQL_KitFeedbackUpdateComment = KQL_KitFeedbackUpdateCommentStore();
 
-function KQL_IssueStore() {
-	const operationName = 'KQL_Issue';
+function KQL_KitFeedbackIssueStore() {
+	const operationName = 'KQL_KitFeedbackIssue';
 	const operationType = ResponseResultType.Query;
 
 	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.IssueQuery, Types.IssueQueryVariables>>({...defaultStoreValue, operationName, operationType});
+	const { subscribe, set, update } = writable<RequestResult<Types.KitFeedbackIssueQuery, Types.KitFeedbackIssueQueryVariables>>({...defaultStoreValue, operationName, operationType});
 
 		async function queryLocal(
-			params?: RequestQueryParameters<Types.IssueQueryVariables>
-		): Promise<RequestResult<Types.IssueQuery, Types.IssueQueryVariables>> {
+			params?: RequestQueryParameters<Types.KitFeedbackIssueQueryVariables>
+		): Promise<RequestResult<Types.KitFeedbackIssueQuery, Types.KitFeedbackIssueQueryVariables>> {
 			let { fetch, variables, settings } = params ?? {};
 			let { cacheMs, policy } = settings ?? {};
 
-			const storedVariables = get(KQL_Issue).variables;
+			const storedVariables = get(KQL_KitFeedbackIssue).variables;
 			variables = variables ?? storedVariables;
 			policy = policy ?? kitQLClient.policy;
 
@@ -297,7 +296,7 @@ function KQL_IssueStore() {
 			if (browser) {
 				if (policy !== 'network-only') {
 					// prettier-ignore
-					const cachedData = kitQLClient.requestCache<Types.IssueQuery, Types.IssueQueryVariables>({
+					const cachedData = kitQLClient.requestCache<Types.KitFeedbackIssueQuery, Types.KitFeedbackIssueQueryVariables>({
 						variables, operationName, cacheMs,	browser
 					});
 					if (cachedData) {
@@ -322,9 +321,9 @@ function KQL_IssueStore() {
 			});
 
 			// prettier-ignore
-			const res = await kitQLClient.request<Types.IssueQuery, Types.IssueQueryVariables>({
+			const res = await kitQLClient.request<Types.KitFeedbackIssueQuery, Types.KitFeedbackIssueQueryVariables>({
 				skFetch: fetch,
-				document: Types.IssueDocument,
+				document: Types.KitFeedbackIssueDocument,
 				variables, 
 				operationName, 
 				operationType, 
@@ -349,7 +348,7 @@ function KQL_IssueStore() {
 		 * @returns fill this store & the cache
 		 */
 		queryLoad: async (
-			params?: RequestQueryParameters<Types.IssueQueryVariables>
+			params?: RequestQueryParameters<Types.KitFeedbackIssueQueryVariables>
 		): Promise<void> => {
 			if (clientStarted) {
 				queryLocal(params); // No await in purpose, we are in a client navigation.
@@ -362,7 +361,7 @@ function KQL_IssueStore() {
 		 * Reset Cache
 		 */
 		resetCache(
-			variables: Types.IssueQueryVariables | null = null,
+			variables: Types.KitFeedbackIssueQueryVariables | null = null,
 			allOperationKey: boolean = true,
 			withResetStore: boolean = true
 		) {
@@ -376,41 +375,41 @@ function KQL_IssueStore() {
 		 * Patch the store &&|| cache with some data.
 		 */
 		// prettier-ignore
-		patch(data: Types.IssueQuery, variables: Types.IssueQueryVariables | null = null, type: PatchType = 'cache-and-store'): void {
+		patch(data: Types.KitFeedbackIssueQuery, variables: Types.KitFeedbackIssueQueryVariables | null = null, type: PatchType = 'cache-and-store'): void {
 			let updatedCacheStore = undefined;
 			if(type === 'cache-only' || type === 'cache-and-store') {
-				updatedCacheStore = kitQLClient.cacheUpdate<Types.IssueQuery, Types.IssueQueryVariables>(operationName, data, { variables });
+				updatedCacheStore = kitQLClient.cacheUpdate<Types.KitFeedbackIssueQuery, Types.KitFeedbackIssueQueryVariables>(operationName, data, { variables });
 			}
 			if(type === 'store-only' ) {
-				let toReturn = { ...get(KQL_Issue), data, variables } ;
+				let toReturn = { ...get(KQL_KitFeedbackIssue), data, variables } ;
 				set(toReturn);
 			}
 			if(type === 'cache-and-store' ) {
-				set({...get(KQL_Issue), ...updatedCacheStore});
+				set({...get(KQL_KitFeedbackIssue), ...updatedCacheStore});
 			}
 			kitQLClient.logInfo(operationName, "patch", type);
 		}
 	};
 }
 /**
- * KitQL Svelte Store with the latest `Issue` Operation
+ * KitQL Svelte Store with the latest `KitFeedbackIssue` Operation
  */
-export const KQL_Issue = KQL_IssueStore();
+export const KQL_KitFeedbackIssue = KQL_KitFeedbackIssueStore();
 
-function KQL_IssueTemplateStore() {
-	const operationName = 'KQL_IssueTemplate';
+function KQL_KitFeedbackIssueTemplateStore() {
+	const operationName = 'KQL_KitFeedbackIssueTemplate';
 	const operationType = ResponseResultType.Query;
 
 	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.IssueTemplateQuery, Types.IssueTemplateQueryVariables>>({...defaultStoreValue, operationName, operationType});
+	const { subscribe, set, update } = writable<RequestResult<Types.KitFeedbackIssueTemplateQuery, Types.KitFeedbackIssueTemplateQueryVariables>>({...defaultStoreValue, operationName, operationType});
 
 		async function queryLocal(
-			params?: RequestQueryParameters<Types.IssueTemplateQueryVariables>
-		): Promise<RequestResult<Types.IssueTemplateQuery, Types.IssueTemplateQueryVariables>> {
+			params?: RequestQueryParameters<Types.KitFeedbackIssueTemplateQueryVariables>
+		): Promise<RequestResult<Types.KitFeedbackIssueTemplateQuery, Types.KitFeedbackIssueTemplateQueryVariables>> {
 			let { fetch, variables, settings } = params ?? {};
 			let { cacheMs, policy } = settings ?? {};
 
-			const storedVariables = get(KQL_IssueTemplate).variables;
+			const storedVariables = get(KQL_KitFeedbackIssueTemplate).variables;
 			variables = variables ?? storedVariables;
 			policy = policy ?? kitQLClient.policy;
 
@@ -418,7 +417,7 @@ function KQL_IssueTemplateStore() {
 			if (browser) {
 				if (policy !== 'network-only') {
 					// prettier-ignore
-					const cachedData = kitQLClient.requestCache<Types.IssueTemplateQuery, Types.IssueTemplateQueryVariables>({
+					const cachedData = kitQLClient.requestCache<Types.KitFeedbackIssueTemplateQuery, Types.KitFeedbackIssueTemplateQueryVariables>({
 						variables, operationName, cacheMs,	browser
 					});
 					if (cachedData) {
@@ -443,9 +442,9 @@ function KQL_IssueTemplateStore() {
 			});
 
 			// prettier-ignore
-			const res = await kitQLClient.request<Types.IssueTemplateQuery, Types.IssueTemplateQueryVariables>({
+			const res = await kitQLClient.request<Types.KitFeedbackIssueTemplateQuery, Types.KitFeedbackIssueTemplateQueryVariables>({
 				skFetch: fetch,
-				document: Types.IssueTemplateDocument,
+				document: Types.KitFeedbackIssueTemplateDocument,
 				variables, 
 				operationName, 
 				operationType, 
@@ -470,7 +469,7 @@ function KQL_IssueTemplateStore() {
 		 * @returns fill this store & the cache
 		 */
 		queryLoad: async (
-			params?: RequestQueryParameters<Types.IssueTemplateQueryVariables>
+			params?: RequestQueryParameters<Types.KitFeedbackIssueTemplateQueryVariables>
 		): Promise<void> => {
 			if (clientStarted) {
 				queryLocal(params); // No await in purpose, we are in a client navigation.
@@ -483,7 +482,7 @@ function KQL_IssueTemplateStore() {
 		 * Reset Cache
 		 */
 		resetCache(
-			variables: Types.IssueTemplateQueryVariables | null = null,
+			variables: Types.KitFeedbackIssueTemplateQueryVariables | null = null,
 			allOperationKey: boolean = true,
 			withResetStore: boolean = true
 		) {
@@ -497,41 +496,41 @@ function KQL_IssueTemplateStore() {
 		 * Patch the store &&|| cache with some data.
 		 */
 		// prettier-ignore
-		patch(data: Types.IssueTemplateQuery, variables: Types.IssueTemplateQueryVariables | null = null, type: PatchType = 'cache-and-store'): void {
+		patch(data: Types.KitFeedbackIssueTemplateQuery, variables: Types.KitFeedbackIssueTemplateQueryVariables | null = null, type: PatchType = 'cache-and-store'): void {
 			let updatedCacheStore = undefined;
 			if(type === 'cache-only' || type === 'cache-and-store') {
-				updatedCacheStore = kitQLClient.cacheUpdate<Types.IssueTemplateQuery, Types.IssueTemplateQueryVariables>(operationName, data, { variables });
+				updatedCacheStore = kitQLClient.cacheUpdate<Types.KitFeedbackIssueTemplateQuery, Types.KitFeedbackIssueTemplateQueryVariables>(operationName, data, { variables });
 			}
 			if(type === 'store-only' ) {
-				let toReturn = { ...get(KQL_IssueTemplate), data, variables } ;
+				let toReturn = { ...get(KQL_KitFeedbackIssueTemplate), data, variables } ;
 				set(toReturn);
 			}
 			if(type === 'cache-and-store' ) {
-				set({...get(KQL_IssueTemplate), ...updatedCacheStore});
+				set({...get(KQL_KitFeedbackIssueTemplate), ...updatedCacheStore});
 			}
 			kitQLClient.logInfo(operationName, "patch", type);
 		}
 	};
 }
 /**
- * KitQL Svelte Store with the latest `IssueTemplate` Operation
+ * KitQL Svelte Store with the latest `KitFeedbackIssueTemplate` Operation
  */
-export const KQL_IssueTemplate = KQL_IssueTemplateStore();
+export const KQL_KitFeedbackIssueTemplate = KQL_KitFeedbackIssueTemplateStore();
 
-function KQL_IssuesStore() {
-	const operationName = 'KQL_Issues';
+function KQL_KitFeedbackIssuesStore() {
+	const operationName = 'KQL_KitFeedbackIssues';
 	const operationType = ResponseResultType.Query;
 
 	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.IssuesQuery, Types.IssuesQueryVariables>>({...defaultStoreValue, operationName, operationType});
+	const { subscribe, set, update } = writable<RequestResult<Types.KitFeedbackIssuesQuery, Types.KitFeedbackIssuesQueryVariables>>({...defaultStoreValue, operationName, operationType});
 
 		async function queryLocal(
-			params?: RequestQueryParameters<Types.IssuesQueryVariables>
-		): Promise<RequestResult<Types.IssuesQuery, Types.IssuesQueryVariables>> {
+			params?: RequestQueryParameters<Types.KitFeedbackIssuesQueryVariables>
+		): Promise<RequestResult<Types.KitFeedbackIssuesQuery, Types.KitFeedbackIssuesQueryVariables>> {
 			let { fetch, variables, settings } = params ?? {};
 			let { cacheMs, policy } = settings ?? {};
 
-			const storedVariables = get(KQL_Issues).variables;
+			const storedVariables = get(KQL_KitFeedbackIssues).variables;
 			variables = variables ?? storedVariables;
 			policy = policy ?? kitQLClient.policy;
 
@@ -539,7 +538,7 @@ function KQL_IssuesStore() {
 			if (browser) {
 				if (policy !== 'network-only') {
 					// prettier-ignore
-					const cachedData = kitQLClient.requestCache<Types.IssuesQuery, Types.IssuesQueryVariables>({
+					const cachedData = kitQLClient.requestCache<Types.KitFeedbackIssuesQuery, Types.KitFeedbackIssuesQueryVariables>({
 						variables, operationName, cacheMs,	browser
 					});
 					if (cachedData) {
@@ -564,9 +563,9 @@ function KQL_IssuesStore() {
 			});
 
 			// prettier-ignore
-			const res = await kitQLClient.request<Types.IssuesQuery, Types.IssuesQueryVariables>({
+			const res = await kitQLClient.request<Types.KitFeedbackIssuesQuery, Types.KitFeedbackIssuesQueryVariables>({
 				skFetch: fetch,
-				document: Types.IssuesDocument,
+				document: Types.KitFeedbackIssuesDocument,
 				variables, 
 				operationName, 
 				operationType, 
@@ -591,7 +590,7 @@ function KQL_IssuesStore() {
 		 * @returns fill this store & the cache
 		 */
 		queryLoad: async (
-			params?: RequestQueryParameters<Types.IssuesQueryVariables>
+			params?: RequestQueryParameters<Types.KitFeedbackIssuesQueryVariables>
 		): Promise<void> => {
 			if (clientStarted) {
 				queryLocal(params); // No await in purpose, we are in a client navigation.
@@ -604,7 +603,7 @@ function KQL_IssuesStore() {
 		 * Reset Cache
 		 */
 		resetCache(
-			variables: Types.IssuesQueryVariables | null = null,
+			variables: Types.KitFeedbackIssuesQueryVariables | null = null,
 			allOperationKey: boolean = true,
 			withResetStore: boolean = true
 		) {
@@ -618,41 +617,41 @@ function KQL_IssuesStore() {
 		 * Patch the store &&|| cache with some data.
 		 */
 		// prettier-ignore
-		patch(data: Types.IssuesQuery, variables: Types.IssuesQueryVariables | null = null, type: PatchType = 'cache-and-store'): void {
+		patch(data: Types.KitFeedbackIssuesQuery, variables: Types.KitFeedbackIssuesQueryVariables | null = null, type: PatchType = 'cache-and-store'): void {
 			let updatedCacheStore = undefined;
 			if(type === 'cache-only' || type === 'cache-and-store') {
-				updatedCacheStore = kitQLClient.cacheUpdate<Types.IssuesQuery, Types.IssuesQueryVariables>(operationName, data, { variables });
+				updatedCacheStore = kitQLClient.cacheUpdate<Types.KitFeedbackIssuesQuery, Types.KitFeedbackIssuesQueryVariables>(operationName, data, { variables });
 			}
 			if(type === 'store-only' ) {
-				let toReturn = { ...get(KQL_Issues), data, variables } ;
+				let toReturn = { ...get(KQL_KitFeedbackIssues), data, variables } ;
 				set(toReturn);
 			}
 			if(type === 'cache-and-store' ) {
-				set({...get(KQL_Issues), ...updatedCacheStore});
+				set({...get(KQL_KitFeedbackIssues), ...updatedCacheStore});
 			}
 			kitQLClient.logInfo(operationName, "patch", type);
 		}
 	};
 }
 /**
- * KitQL Svelte Store with the latest `Issues` Operation
+ * KitQL Svelte Store with the latest `KitFeedbackIssues` Operation
  */
-export const KQL_Issues = KQL_IssuesStore();
+export const KQL_KitFeedbackIssues = KQL_KitFeedbackIssuesStore();
 
-function KQL_MilestonesStore() {
-	const operationName = 'KQL_Milestones';
+function KQL_KitFeedbackMilestonesStore() {
+	const operationName = 'KQL_KitFeedbackMilestones';
 	const operationType = ResponseResultType.Query;
 
 	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.MilestonesQuery, Types.MilestonesQueryVariables>>({...defaultStoreValue, operationName, operationType});
+	const { subscribe, set, update } = writable<RequestResult<Types.KitFeedbackMilestonesQuery, Types.KitFeedbackMilestonesQueryVariables>>({...defaultStoreValue, operationName, operationType});
 
 		async function queryLocal(
-			params?: RequestQueryParameters<Types.MilestonesQueryVariables>
-		): Promise<RequestResult<Types.MilestonesQuery, Types.MilestonesQueryVariables>> {
+			params?: RequestQueryParameters<Types.KitFeedbackMilestonesQueryVariables>
+		): Promise<RequestResult<Types.KitFeedbackMilestonesQuery, Types.KitFeedbackMilestonesQueryVariables>> {
 			let { fetch, variables, settings } = params ?? {};
 			let { cacheMs, policy } = settings ?? {};
 
-			const storedVariables = get(KQL_Milestones).variables;
+			const storedVariables = get(KQL_KitFeedbackMilestones).variables;
 			variables = variables ?? storedVariables;
 			policy = policy ?? kitQLClient.policy;
 
@@ -660,7 +659,7 @@ function KQL_MilestonesStore() {
 			if (browser) {
 				if (policy !== 'network-only') {
 					// prettier-ignore
-					const cachedData = kitQLClient.requestCache<Types.MilestonesQuery, Types.MilestonesQueryVariables>({
+					const cachedData = kitQLClient.requestCache<Types.KitFeedbackMilestonesQuery, Types.KitFeedbackMilestonesQueryVariables>({
 						variables, operationName, cacheMs,	browser
 					});
 					if (cachedData) {
@@ -685,9 +684,9 @@ function KQL_MilestonesStore() {
 			});
 
 			// prettier-ignore
-			const res = await kitQLClient.request<Types.MilestonesQuery, Types.MilestonesQueryVariables>({
+			const res = await kitQLClient.request<Types.KitFeedbackMilestonesQuery, Types.KitFeedbackMilestonesQueryVariables>({
 				skFetch: fetch,
-				document: Types.MilestonesDocument,
+				document: Types.KitFeedbackMilestonesDocument,
 				variables, 
 				operationName, 
 				operationType, 
@@ -712,7 +711,7 @@ function KQL_MilestonesStore() {
 		 * @returns fill this store & the cache
 		 */
 		queryLoad: async (
-			params?: RequestQueryParameters<Types.MilestonesQueryVariables>
+			params?: RequestQueryParameters<Types.KitFeedbackMilestonesQueryVariables>
 		): Promise<void> => {
 			if (clientStarted) {
 				queryLocal(params); // No await in purpose, we are in a client navigation.
@@ -725,7 +724,7 @@ function KQL_MilestonesStore() {
 		 * Reset Cache
 		 */
 		resetCache(
-			variables: Types.MilestonesQueryVariables | null = null,
+			variables: Types.KitFeedbackMilestonesQueryVariables | null = null,
 			allOperationKey: boolean = true,
 			withResetStore: boolean = true
 		) {
@@ -739,144 +738,23 @@ function KQL_MilestonesStore() {
 		 * Patch the store &&|| cache with some data.
 		 */
 		// prettier-ignore
-		patch(data: Types.MilestonesQuery, variables: Types.MilestonesQueryVariables | null = null, type: PatchType = 'cache-and-store'): void {
+		patch(data: Types.KitFeedbackMilestonesQuery, variables: Types.KitFeedbackMilestonesQueryVariables | null = null, type: PatchType = 'cache-and-store'): void {
 			let updatedCacheStore = undefined;
 			if(type === 'cache-only' || type === 'cache-and-store') {
-				updatedCacheStore = kitQLClient.cacheUpdate<Types.MilestonesQuery, Types.MilestonesQueryVariables>(operationName, data, { variables });
+				updatedCacheStore = kitQLClient.cacheUpdate<Types.KitFeedbackMilestonesQuery, Types.KitFeedbackMilestonesQueryVariables>(operationName, data, { variables });
 			}
 			if(type === 'store-only' ) {
-				let toReturn = { ...get(KQL_Milestones), data, variables } ;
+				let toReturn = { ...get(KQL_KitFeedbackMilestones), data, variables } ;
 				set(toReturn);
 			}
 			if(type === 'cache-and-store' ) {
-				set({...get(KQL_Milestones), ...updatedCacheStore});
+				set({...get(KQL_KitFeedbackMilestones), ...updatedCacheStore});
 			}
 			kitQLClient.logInfo(operationName, "patch", type);
 		}
 	};
 }
 /**
- * KitQL Svelte Store with the latest `Milestones` Operation
+ * KitQL Svelte Store with the latest `KitFeedbackMilestones` Operation
  */
-export const KQL_Milestones = KQL_MilestonesStore();
-
-function KQL_RepositoryConstantsStore() {
-	const operationName = 'KQL_RepositoryConstants';
-	const operationType = ResponseResultType.Query;
-
-	// prettier-ignore
-	const { subscribe, set, update } = writable<RequestResult<Types.RepositoryConstantsQuery, Types.RepositoryConstantsQueryVariables>>({...defaultStoreValue, operationName, operationType});
-
-		async function queryLocal(
-			params?: RequestQueryParameters<Types.RepositoryConstantsQueryVariables>
-		): Promise<RequestResult<Types.RepositoryConstantsQuery, Types.RepositoryConstantsQueryVariables>> {
-			let { fetch, variables, settings } = params ?? {};
-			let { cacheMs, policy } = settings ?? {};
-
-			const storedVariables = get(KQL_RepositoryConstants).variables;
-			variables = variables ?? storedVariables;
-			policy = policy ?? kitQLClient.policy;
-
-			// Cache only in the browser for now. In SSR, we will need session identif to not mix peoples data
-			if (browser) {
-				if (policy !== 'network-only') {
-					// prettier-ignore
-					const cachedData = kitQLClient.requestCache<Types.RepositoryConstantsQuery, Types.RepositoryConstantsQueryVariables>({
-						variables, operationName, cacheMs,	browser
-					});
-					if (cachedData) {
-						const result = { ...cachedData, isFetching: false, status: RequestStatus.DONE };
-						if (policy === 'cache-first') {
-							set(result);
-							if (!result.isOutdated) {
-								return result;
-							}
-						} else if (policy === 'cache-only') {
-							set(result);
-							return result;
-						} else if (policy === 'cache-and-network') {
-							set(result);
-						}
-					}
-				}
-			}
-
-			update((c) => {
-				return { ...c, isFetching: true, status: RequestStatus.LOADING };
-			});
-
-			// prettier-ignore
-			const res = await kitQLClient.request<Types.RepositoryConstantsQuery, Types.RepositoryConstantsQueryVariables>({
-				skFetch: fetch,
-				document: Types.RepositoryConstantsDocument,
-				variables, 
-				operationName, 
-				operationType, 
-				browser
-			});
-			const result = { ...res, isFetching: false, status: RequestStatus.DONE, variables };
-			set(result);
-			return result;
-		}
-
-	return {
-		subscribe,
-
-		/**
-		 * Can be used for SSR, but simpler option is `.queryLoad`
-		 * @returns fill this store & the cache
-		 */
-		query: queryLocal,
-
-		/**
-		 * Ideal for SSR query. To be used in SvelteKit load function
-		 * @returns fill this store & the cache
-		 */
-		queryLoad: async (
-			params?: RequestQueryParameters<Types.RepositoryConstantsQueryVariables>
-		): Promise<void> => {
-			if (clientStarted) {
-				queryLocal(params); // No await in purpose, we are in a client navigation.
-			} else {
-				await queryLocal(params);
-			}
-		},
-
-		/**
-		 * Reset Cache
-		 */
-		resetCache(
-			variables: Types.RepositoryConstantsQueryVariables | null = null,
-			allOperationKey: boolean = true,
-			withResetStore: boolean = true
-		) {
-			kitQLClient.cacheRemove(operationName, { variables, allOperationKey });
-			if (withResetStore) {
-				set({ ...defaultStoreValue, operationName });
-			}
-		},
-
-		/**
-		 * Patch the store &&|| cache with some data.
-		 */
-		// prettier-ignore
-		patch(data: Types.RepositoryConstantsQuery, variables: Types.RepositoryConstantsQueryVariables | null = null, type: PatchType = 'cache-and-store'): void {
-			let updatedCacheStore = undefined;
-			if(type === 'cache-only' || type === 'cache-and-store') {
-				updatedCacheStore = kitQLClient.cacheUpdate<Types.RepositoryConstantsQuery, Types.RepositoryConstantsQueryVariables>(operationName, data, { variables });
-			}
-			if(type === 'store-only' ) {
-				let toReturn = { ...get(KQL_RepositoryConstants), data, variables } ;
-				set(toReturn);
-			}
-			if(type === 'cache-and-store' ) {
-				set({...get(KQL_RepositoryConstants), ...updatedCacheStore});
-			}
-			kitQLClient.logInfo(operationName, "patch", type);
-		}
-	};
-}
-/**
- * KitQL Svelte Store with the latest `RepositoryConstants` Operation
- */
-export const KQL_RepositoryConstants = KQL_RepositoryConstantsStore();
+export const KQL_KitFeedbackMilestones = KQL_KitFeedbackMilestonesStore();

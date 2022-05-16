@@ -1,7 +1,12 @@
 extend type Query {
-	repositoryConstants: RepositoryConstants!
-	issue(number: Int!): Issue
-	issues(filters: IssueFilters, pagination: Pagination!): Issues
-	issueTemplate(name: String!): IssueTemplate
-	milestones(filters: MilestoneFilters, pagination: Pagination!): Milestones
+	KitFeedback_issue(number: Int!): KitFeedback_Issue
+	KitFeedback_issues(
+		filters: KitFeedback_IssueFilters
+		pagination: KitFeedback_Pagination!
+	): KitFeedback_Issues
+	KitFeedback_issueTemplate(name: String!): KitFeedback_IssueTemplate
+	KitFeedback_milestones(
+		filters: KitFeedback_MilestoneFilters
+		pagination: KitFeedback_Pagination!
+	): KitFeedback_Milestones
 }

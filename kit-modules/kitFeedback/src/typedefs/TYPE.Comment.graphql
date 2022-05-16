@@ -1,4 +1,4 @@
-type Comment {
+type KitFeedback_Comment {
 	id: ID
 	isMinimized: Boolean
 	isPublic: Boolean
@@ -8,21 +8,21 @@ type Comment {
 	bodyHTML: String
 }
 
-type Comments {
-	nodes: [Comment!]
+type KitFeedback_Comments {
+	nodes: [KitFeedback_Comment!]
 	next: String
 }
 
-input CreateCommentFields {
+input KitFeedback_CreateCommentFields {
 	issueID: ID!
 	body: String!
 }
 
-input UpdateCommentFields {
+input KitFeedback_UpdateCommentFields {
 	commentID: ID!
 	body: String!
 }
 
-input MinimizeCommentFields {
+input KitFeedback_MinimizeCommentFields {
 	commentID: ID!
 }

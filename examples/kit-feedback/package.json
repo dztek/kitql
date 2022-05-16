@@ -57,17 +57,18 @@
 		"@envelop/core": "^2.3.1",
 		"@envelop/graphql-jit": "^4.2.1",
 		"@envelop/graphql-modules": "^3.3.1",
-		"@felte/validator-vest": "^1.0.6",
 		"@graphql-yoga/common": "2.0.0",
-		"@iconify/svelte": "^2.2.1",
 		"@kitql/all-in": "^0.6.3",
-		"felte": "^1.1.7",
-		"graphql": "^16.3.0",
+		"@kitql/kit-feedback": "^0.0.5",
+		"date-fns": "^2.28.0",
+		"graphql": "16.3.0",
 		"graphql-scalars": "^1.17.0",
-		"reflect-metadata": "^0.1.13",
-		"vest": "^4.3.3"
+		"reflect-metadata": "^0.1.13"
 	},
 	"peerDependencies": {},
+	"resolutions": {
+		"graphql": "16.3.0"
+	},
 	"type": "module",
 	"publishConfig": {
 		"directory": "dist",

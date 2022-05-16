@@ -2,21 +2,24 @@
 	import { browser } from '$app/env';
 	import IssueList from '../issues/ISSUE_List.svelte';
 	import { config } from '../../utils/config';
-	import { KQL_Issues } from '$lib/graphql/_kitql/graphqlStores';
-	import { type IssueState, type IssueFilters } from '$lib/graphql/_kitql/graphqlTypes';
+	import { KQL_KitFeedbackIssues } from '$lib/graphql/_kitql/graphqlStores';
+	import {
+		type KitFeedback_IssueState,
+		type KitFeedback_IssueFilters
+	} from '$lib/graphql/_kitql/graphqlTypes';
 	import Icon from '@iconify/svelte';
 	import { resolveTheme, theme } from '../../utils/theme';
 	import IssueCreate from '../issues/ISSUE_Create.svelte';
 	import { computeMilestoneTitle } from '../milestones/helper';
 
-	export let filters: Omit<IssueFilters, 'states'> = {};
+	export let filters: Omit<KitFeedback_IssueFilters, 'states'> = {};
 	export let title: string = 'Issues';
 	export let milestoneId: string = undefined;
 
-	let state: IssueState = 'OPEN';
+	let state: KitFeedback_IssueState = 'OPEN';
 
 	$: browser &&
-		KQL_Issues.query({
+		KQL_KitFeedbackIssues.query({
 			variables: {
 				filters: { ...filters, states: [state] },
 				pagination: {
@@ -64,10 +67,10 @@
 			</span>
 		</div>
 
-		{#if $KQL_Issues.status === 'LOADING'}
+		{#if $KQL_KitFeedbackIssues.status === 'LOADING'}
 			<Icon icon="eos-icons:loading" />
 		{:else}
-			<IssueList issues={$KQL_Issues.data?.issues.nodes} />
+			<IssueList issues={$KQL_KitFeedbackIssues.data?.issues.nodes} />
 		{/if}
 	</div>
 </div>

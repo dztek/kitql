@@ -16,13 +16,13 @@ export type Scalars = {
   DateTime: any;
 };
 
-export type AddReactionFields = {
-  content: Reaction;
+export type KitFeedback_AddReactionFields = {
+  content: KitFeedback_Reaction;
   subjectID: Scalars['ID'];
 };
 
-export type Comment = {
-  __typename?: 'Comment';
+export type KitFeedback_Comment = {
+  __typename?: 'KitFeedback_Comment';
   author?: Maybe<Scalars['String']>;
   body?: Maybe<Scalars['String']>;
   bodyHTML?: Maybe<Scalars['String']>;
@@ -32,166 +32,87 @@ export type Comment = {
   isPublic?: Maybe<Scalars['Boolean']>;
 };
 
-export type Comments = {
-  __typename?: 'Comments';
+export type KitFeedback_Comments = {
+  __typename?: 'KitFeedback_Comments';
   next?: Maybe<Scalars['String']>;
-  nodes?: Maybe<Array<Comment>>;
+  nodes?: Maybe<Array<KitFeedback_Comment>>;
 };
 
-export type CreateCommentFields = {
+export type KitFeedback_CreateCommentFields = {
   body: Scalars['String'];
   issueID: Scalars['ID'];
 };
 
-export type CreateIssueFields = {
+export type KitFeedback_CreateIssueFields = {
   body?: InputMaybe<Scalars['String']>;
   milestoneId?: InputMaybe<Scalars['ID']>;
   title: Scalars['String'];
 };
 
-export type Issue = {
-  __typename?: 'Issue';
+export type KitFeedback_Issue = {
+  __typename?: 'KitFeedback_Issue';
   author?: Maybe<Scalars['String']>;
   bodyHTML?: Maybe<Scalars['String']>;
-  comments?: Maybe<Comments>;
+  comments?: Maybe<KitFeedback_Comments>;
   createdAt?: Maybe<Scalars['DateTime']>;
   id?: Maybe<Scalars['ID']>;
-  metadata?: Maybe<Comment>;
+  metadata?: Maybe<KitFeedback_Comment>;
   number?: Maybe<Scalars['Int']>;
   titleHTML?: Maybe<Scalars['String']>;
 };
 
-export type IssueFilters = {
+export type KitFeedback_IssueFilters = {
   labels?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   milestoneNumber?: InputMaybe<Scalars['String']>;
-  states?: InputMaybe<Array<InputMaybe<IssueState>>>;
+  states?: InputMaybe<Array<InputMaybe<KitFeedback_IssueState>>>;
 };
 
-export enum IssueState {
+export enum KitFeedback_IssueState {
   Closed = 'CLOSED',
   Open = 'OPEN'
 }
 
-export type IssueTemplate = {
-  __typename?: 'IssueTemplate';
+export type KitFeedback_IssueTemplate = {
+  __typename?: 'KitFeedback_IssueTemplate';
   body?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
 
-export type Issues = {
-  __typename?: 'Issues';
+export type KitFeedback_Issues = {
+  __typename?: 'KitFeedback_Issues';
   next?: Maybe<Scalars['String']>;
-  nodes?: Maybe<Array<Issue>>;
+  nodes?: Maybe<Array<KitFeedback_Issue>>;
 };
 
-export type Milestone = {
-  __typename?: 'Milestone';
+export type KitFeedback_Milestone = {
+  __typename?: 'KitFeedback_Milestone';
   description?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   number?: Maybe<Scalars['Int']>;
   title: Scalars['String'];
 };
 
-export type MilestoneFilters = {
+export type KitFeedback_MilestoneFilters = {
   title?: InputMaybe<Scalars['String']>;
 };
 
-export type Milestones = {
-  __typename?: 'Milestones';
+export type KitFeedback_Milestones = {
+  __typename?: 'KitFeedback_Milestones';
   next?: Maybe<Scalars['String']>;
-  nodes?: Maybe<Array<Maybe<Milestone>>>;
+  nodes?: Maybe<Array<Maybe<KitFeedback_Milestone>>>;
 };
 
-export type MinimizeCommentFields = {
+export type KitFeedback_MinimizeCommentFields = {
   commentID: Scalars['ID'];
 };
 
-/** Our loved graphql Mutation root */
-export type Mutation = {
-  __typename?: 'Mutation';
-  _boostServer?: Maybe<Scalars['String']>;
-  _generateError?: Maybe<Scalars['String']>;
-  addReaction?: Maybe<Scalars['Int']>;
-  createComment?: Maybe<Comment>;
-  createIssue?: Maybe<Issue>;
-  minimizeComment?: Maybe<Comment>;
-  updateComment?: Maybe<Comment>;
-};
-
-
-/** Our loved graphql Mutation root */
-export type MutationAddReactionArgs = {
-  fields: AddReactionFields;
-};
-
-
-/** Our loved graphql Mutation root */
-export type MutationCreateCommentArgs = {
-  fields: CreateCommentFields;
-};
-
-
-/** Our loved graphql Mutation root */
-export type MutationCreateIssueArgs = {
-  fields: CreateIssueFields;
-};
-
-
-/** Our loved graphql Mutation root */
-export type MutationMinimizeCommentArgs = {
-  fields: MinimizeCommentFields;
-};
-
-
-/** Our loved graphql Mutation root */
-export type MutationUpdateCommentArgs = {
-  fields: UpdateCommentFields;
-};
-
-export type Pagination = {
+export type KitFeedback_Pagination = {
   cursor?: InputMaybe<Scalars['String']>;
   take: Scalars['Int'];
 };
 
-/** Our loved graphql Query root */
-export type Query = {
-  __typename?: 'Query';
-  issue?: Maybe<Issue>;
-  issueTemplate?: Maybe<IssueTemplate>;
-  issues?: Maybe<Issues>;
-  milestones?: Maybe<Milestones>;
-  repositoryConstants: RepositoryConstants;
-  version: Version;
-};
-
-
-/** Our loved graphql Query root */
-export type QueryIssueArgs = {
-  number: Scalars['Int'];
-};
-
-
-/** Our loved graphql Query root */
-export type QueryIssueTemplateArgs = {
-  name: Scalars['String'];
-};
-
-
-/** Our loved graphql Query root */
-export type QueryIssuesArgs = {
-  filters?: InputMaybe<IssueFilters>;
-  pagination: Pagination;
-};
-
-
-/** Our loved graphql Query root */
-export type QueryMilestonesArgs = {
-  filters?: InputMaybe<MilestoneFilters>;
-  pagination: Pagination;
-};
-
-export enum Reaction {
+export enum KitFeedback_Reaction {
   Confused = 'CONFUSED',
   Eyes = 'EYES',
   Heart = 'HEART',
@@ -202,15 +123,87 @@ export enum Reaction {
   ThumbsUp = 'THUMBS_UP'
 }
 
-export type RepositoryConstants = {
-  __typename?: 'RepositoryConstants';
-  createIssueLabelID: Scalars['ID'];
-  repositoryID: Scalars['ID'];
-};
-
-export type UpdateCommentFields = {
+export type KitFeedback_UpdateCommentFields = {
   body: Scalars['String'];
   commentID: Scalars['ID'];
+};
+
+/** Our loved graphql Mutation root */
+export type Mutation = {
+  __typename?: 'Mutation';
+  KitFeedback_addReaction?: Maybe<Scalars['Int']>;
+  KitFeedback_createComment?: Maybe<KitFeedback_Comment>;
+  KitFeedback_createIssue?: Maybe<KitFeedback_Issue>;
+  KitFeedback_minimizeComment?: Maybe<KitFeedback_Comment>;
+  KitFeedback_updateComment?: Maybe<KitFeedback_Comment>;
+  _boostServer?: Maybe<Scalars['String']>;
+  _generateError?: Maybe<Scalars['String']>;
+};
+
+
+/** Our loved graphql Mutation root */
+export type MutationKitFeedback_AddReactionArgs = {
+  fields: KitFeedback_AddReactionFields;
+};
+
+
+/** Our loved graphql Mutation root */
+export type MutationKitFeedback_CreateCommentArgs = {
+  fields: KitFeedback_CreateCommentFields;
+};
+
+
+/** Our loved graphql Mutation root */
+export type MutationKitFeedback_CreateIssueArgs = {
+  fields: KitFeedback_CreateIssueFields;
+};
+
+
+/** Our loved graphql Mutation root */
+export type MutationKitFeedback_MinimizeCommentArgs = {
+  fields: KitFeedback_MinimizeCommentFields;
+};
+
+
+/** Our loved graphql Mutation root */
+export type MutationKitFeedback_UpdateCommentArgs = {
+  fields: KitFeedback_UpdateCommentFields;
+};
+
+/** Our loved graphql Query root */
+export type Query = {
+  __typename?: 'Query';
+  KitFeedback_issue?: Maybe<KitFeedback_Issue>;
+  KitFeedback_issueTemplate?: Maybe<KitFeedback_IssueTemplate>;
+  KitFeedback_issues?: Maybe<KitFeedback_Issues>;
+  KitFeedback_milestones?: Maybe<KitFeedback_Milestones>;
+  version: Version;
+};
+
+
+/** Our loved graphql Query root */
+export type QueryKitFeedback_IssueArgs = {
+  number: Scalars['Int'];
+};
+
+
+/** Our loved graphql Query root */
+export type QueryKitFeedback_IssueTemplateArgs = {
+  name: Scalars['String'];
+};
+
+
+/** Our loved graphql Query root */
+export type QueryKitFeedback_IssuesArgs = {
+  filters?: InputMaybe<KitFeedback_IssueFilters>;
+  pagination: KitFeedback_Pagination;
+};
+
+
+/** Our loved graphql Query root */
+export type QueryKitFeedback_MilestonesArgs = {
+  filters?: InputMaybe<KitFeedback_MilestoneFilters>;
+  pagination: KitFeedback_Pagination;
 };
 
 /** Get infos about the version */
@@ -220,103 +213,97 @@ export type Version = {
   releaseCreatedAtUtc: Scalars['DateTime'];
 };
 
-export type CommentDetailFragment = { __typename?: 'Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null };
+export type KitFeedback_CommentDetailFragment = { __typename?: 'KitFeedback_Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null };
 
-export type IssueDetailFragment = { __typename?: 'Issue', id?: string | null, author?: string | null, createdAt?: any | null, titleHTML?: string | null, bodyHTML?: string | null, comments?: { __typename?: 'Comments', next?: string | null, nodes?: Array<{ __typename?: 'Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null }> | null } | null };
+export type KitFeedback_IssueDetailFragment = { __typename?: 'KitFeedback_Issue', id?: string | null, author?: string | null, createdAt?: any | null, titleHTML?: string | null, bodyHTML?: string | null, comments?: { __typename?: 'KitFeedback_Comments', next?: string | null, nodes?: Array<{ __typename?: 'KitFeedback_Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null }> | null } | null };
 
-export type IssuePreviewFragment = { __typename?: 'Issue', id?: string | null, number?: number | null, titleHTML?: string | null, metadata?: { __typename?: 'Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null } | null };
+export type KitFeedback_IssuePreviewFragment = { __typename?: 'KitFeedback_Issue', id?: string | null, number?: number | null, titleHTML?: string | null, metadata?: { __typename?: 'KitFeedback_Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null } | null };
 
-export type IssueTemplateDetailFragment = { __typename?: 'IssueTemplate', name?: string | null, title?: string | null, body?: string | null };
+export type KitFeedback_IssueTemplateDetailFragment = { __typename?: 'KitFeedback_IssueTemplate', name?: string | null, title?: string | null, body?: string | null };
 
-export type MilestonePreviewFragment = { __typename?: 'Milestone', id: string, number?: number | null, title: string };
+export type KitFeedback_MilestonePreviewFragment = { __typename?: 'KitFeedback_Milestone', id: string, number?: number | null, title: string };
 
-export type CreateCommentMutationVariables = Exact<{
-  fields: CreateCommentFields;
+export type KitFeedbackCreateCommentMutationVariables = Exact<{
+  fields: KitFeedback_CreateCommentFields;
 }>;
 
 
-export type CreateCommentMutation = { __typename?: 'Mutation', createComment?: { __typename?: 'Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null } | null };
+export type KitFeedbackCreateCommentMutation = { __typename?: 'Mutation', KitFeedback_createComment?: { __typename?: 'KitFeedback_Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null } | null };
 
-export type AddReactionMutationVariables = Exact<{
-  fields: AddReactionFields;
+export type KitFeedbackAddReactionMutationVariables = Exact<{
+  fields: KitFeedback_AddReactionFields;
 }>;
 
 
-export type AddReactionMutation = { __typename?: 'Mutation', addReaction?: number | null };
+export type KitFeedbackAddReactionMutation = { __typename?: 'Mutation', KitFeedback_addReaction?: number | null };
 
-export type CreateIssueMutationVariables = Exact<{
-  fields: CreateIssueFields;
+export type KitFeedbackCreateIssueMutationVariables = Exact<{
+  fields: KitFeedback_CreateIssueFields;
 }>;
 
 
-export type CreateIssueMutation = { __typename?: 'Mutation', createIssue?: { __typename?: 'Issue', id?: string | null, number?: number | null, titleHTML?: string | null, metadata?: { __typename?: 'Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null } | null } | null };
+export type KitFeedbackCreateIssueMutation = { __typename?: 'Mutation', KitFeedback_createIssue?: { __typename?: 'KitFeedback_Issue', id?: string | null, number?: number | null, titleHTML?: string | null, metadata?: { __typename?: 'KitFeedback_Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null } | null } | null };
 
-export type MinimizeCommentMutationVariables = Exact<{
-  fields: MinimizeCommentFields;
+export type KitFeedbackMinimizeCommentMutationVariables = Exact<{
+  fields: KitFeedback_MinimizeCommentFields;
 }>;
 
 
-export type MinimizeCommentMutation = { __typename?: 'Mutation', minimizeComment?: { __typename?: 'Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null } | null };
+export type KitFeedbackMinimizeCommentMutation = { __typename?: 'Mutation', KitFeedback_minimizeComment?: { __typename?: 'KitFeedback_Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null } | null };
 
-export type UpdateCommentMutationVariables = Exact<{
-  fields: UpdateCommentFields;
+export type KitFeedbackUpdateCommentMutationVariables = Exact<{
+  fields: KitFeedback_UpdateCommentFields;
 }>;
 
 
-export type UpdateCommentMutation = { __typename?: 'Mutation', updateComment?: { __typename?: 'Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null } | null };
+export type KitFeedbackUpdateCommentMutation = { __typename?: 'Mutation', KitFeedback_updateComment?: { __typename?: 'KitFeedback_Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null } | null };
 
-export type IssueQueryVariables = Exact<{
+export type KitFeedbackIssueQueryVariables = Exact<{
   number: Scalars['Int'];
 }>;
 
 
-export type IssueQuery = { __typename?: 'Query', issue?: { __typename?: 'Issue', id?: string | null, author?: string | null, createdAt?: any | null, titleHTML?: string | null, bodyHTML?: string | null, comments?: { __typename?: 'Comments', next?: string | null, nodes?: Array<{ __typename?: 'Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null }> | null } | null } | null };
+export type KitFeedbackIssueQuery = { __typename?: 'Query', KitFeedback_issue?: { __typename?: 'KitFeedback_Issue', id?: string | null, author?: string | null, createdAt?: any | null, titleHTML?: string | null, bodyHTML?: string | null, comments?: { __typename?: 'KitFeedback_Comments', next?: string | null, nodes?: Array<{ __typename?: 'KitFeedback_Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null }> | null } | null } | null };
 
-export type IssueTemplateQueryVariables = Exact<{
+export type KitFeedbackIssueTemplateQueryVariables = Exact<{
   name: Scalars['String'];
 }>;
 
 
-export type IssueTemplateQuery = { __typename?: 'Query', issueTemplate?: { __typename?: 'IssueTemplate', name?: string | null, title?: string | null, body?: string | null } | null };
+export type KitFeedbackIssueTemplateQuery = { __typename?: 'Query', KitFeedback_issueTemplate?: { __typename?: 'KitFeedback_IssueTemplate', name?: string | null, title?: string | null, body?: string | null } | null };
 
-export type IssuesQueryVariables = Exact<{
-  filters?: InputMaybe<IssueFilters>;
-  pagination: Pagination;
+export type KitFeedbackIssuesQueryVariables = Exact<{
+  filters?: InputMaybe<KitFeedback_IssueFilters>;
+  pagination: KitFeedback_Pagination;
 }>;
 
 
-export type IssuesQuery = { __typename?: 'Query', issues?: { __typename?: 'Issues', next?: string | null, nodes?: Array<{ __typename?: 'Issue', id?: string | null, number?: number | null, titleHTML?: string | null, metadata?: { __typename?: 'Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null } | null }> | null } | null };
+export type KitFeedbackIssuesQuery = { __typename?: 'Query', KitFeedback_issues?: { __typename?: 'KitFeedback_Issues', next?: string | null, nodes?: Array<{ __typename?: 'KitFeedback_Issue', id?: string | null, number?: number | null, titleHTML?: string | null, metadata?: { __typename?: 'KitFeedback_Comment', id?: string | null, isMinimized?: boolean | null, isPublic?: boolean | null, createdAt?: any | null, author?: string | null, body?: string | null, bodyHTML?: string | null } | null }> | null } | null };
 
-export type MilestonesQueryVariables = Exact<{
-  filters: MilestoneFilters;
-  pagination: Pagination;
+export type KitFeedbackMilestonesQueryVariables = Exact<{
+  filters: KitFeedback_MilestoneFilters;
+  pagination: KitFeedback_Pagination;
 }>;
 
 
-export type MilestonesQuery = { __typename?: 'Query', milestones?: { __typename?: 'Milestones', next?: string | null, nodes?: Array<{ __typename?: 'Milestone', id: string, number?: number | null, title: string } | null> | null } | null };
+export type KitFeedbackMilestonesQuery = { __typename?: 'Query', KitFeedback_milestones?: { __typename?: 'KitFeedback_Milestones', next?: string | null, nodes?: Array<{ __typename?: 'KitFeedback_Milestone', id: string, number?: number | null, title: string } | null> | null } | null };
 
-export type RepositoryConstantsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type RepositoryConstantsQuery = { __typename?: 'Query', repositoryConstants: { __typename?: 'RepositoryConstants', repositoryID: string, createIssueLabelID: string } };
-
-export const CommentDetailFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"commentDetail"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Comment"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"isMinimized"}},{"kind":"Field","name":{"kind":"Name","value":"isPublic"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"author"}},{"kind":"Field","name":{"kind":"Name","value":"body"}},{"kind":"Field","name":{"kind":"Name","value":"bodyHTML"}}]}}]} as unknown as DocumentNode<CommentDetailFragment, unknown>;
-export const IssueDetailFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"issueDetail"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Issue"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"author"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"titleHTML"}},{"kind":"Field","name":{"kind":"Name","value":"bodyHTML"}},{"kind":"Field","name":{"kind":"Name","value":"comments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"next"}},{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"commentDetail"}}]}}]}}]}},...CommentDetailFragmentDoc.definitions]} as unknown as DocumentNode<IssueDetailFragment, unknown>;
-export const IssuePreviewFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"issuePreview"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Issue"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"number"}},{"kind":"Field","name":{"kind":"Name","value":"titleHTML"}},{"kind":"Field","name":{"kind":"Name","value":"metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"commentDetail"}}]}}]}},...CommentDetailFragmentDoc.definitions]} as unknown as DocumentNode<IssuePreviewFragment, unknown>;
-export const IssueTemplateDetailFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"issueTemplateDetail"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"IssueTemplate"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"body"}}]}}]} as unknown as DocumentNode<IssueTemplateDetailFragment, unknown>;
-export const MilestonePreviewFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"milestonePreview"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Milestone"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"number"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]} as unknown as DocumentNode<MilestonePreviewFragment, unknown>;
-export const CreateCommentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateComment"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fields"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CreateCommentFields"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createComment"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fields"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fields"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"commentDetail"}}]}}]}},...CommentDetailFragmentDoc.definitions]} as unknown as DocumentNode<CreateCommentMutation, CreateCommentMutationVariables>;
-export const AddReactionDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"AddReaction"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fields"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"AddReactionFields"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"addReaction"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fields"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fields"}}}]}]}}]} as unknown as DocumentNode<AddReactionMutation, AddReactionMutationVariables>;
-export const CreateIssueDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateIssue"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fields"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CreateIssueFields"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createIssue"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fields"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fields"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"issuePreview"}}]}}]}},...IssuePreviewFragmentDoc.definitions]} as unknown as DocumentNode<CreateIssueMutation, CreateIssueMutationVariables>;
-export const MinimizeCommentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"MinimizeComment"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fields"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"MinimizeCommentFields"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"minimizeComment"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fields"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fields"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"commentDetail"}}]}}]}},...CommentDetailFragmentDoc.definitions]} as unknown as DocumentNode<MinimizeCommentMutation, MinimizeCommentMutationVariables>;
-export const UpdateCommentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateComment"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fields"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UpdateCommentFields"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateComment"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fields"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fields"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"commentDetail"}}]}}]}},...CommentDetailFragmentDoc.definitions]} as unknown as DocumentNode<UpdateCommentMutation, UpdateCommentMutationVariables>;
-export const IssueDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Issue"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"number"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"issue"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"number"},"value":{"kind":"Variable","name":{"kind":"Name","value":"number"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"issueDetail"}}]}}]}},...IssueDetailFragmentDoc.definitions]} as unknown as DocumentNode<IssueQuery, IssueQueryVariables>;
-export const IssueTemplateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"IssueTemplate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"issueTemplate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"issueTemplateDetail"}}]}}]}},...IssueTemplateDetailFragmentDoc.definitions]} as unknown as DocumentNode<IssueTemplateQuery, IssueTemplateQueryVariables>;
-export const IssuesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Issues"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filters"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"IssueFilters"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"pagination"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Pagination"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"issues"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filters"}}},{"kind":"Argument","name":{"kind":"Name","value":"pagination"},"value":{"kind":"Variable","name":{"kind":"Name","value":"pagination"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"issuePreview"}}]}},{"kind":"Field","name":{"kind":"Name","value":"next"}}]}}]}},...IssuePreviewFragmentDoc.definitions]} as unknown as DocumentNode<IssuesQuery, IssuesQueryVariables>;
-export const MilestonesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Milestones"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filters"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"MilestoneFilters"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"pagination"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Pagination"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"milestones"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filters"}}},{"kind":"Argument","name":{"kind":"Name","value":"pagination"},"value":{"kind":"Variable","name":{"kind":"Name","value":"pagination"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"milestonePreview"}}]}},{"kind":"Field","name":{"kind":"Name","value":"next"}}]}}]}},...MilestonePreviewFragmentDoc.definitions]} as unknown as DocumentNode<MilestonesQuery, MilestonesQueryVariables>;
-export const RepositoryConstantsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"RepositoryConstants"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"repositoryConstants"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"repositoryID"}},{"kind":"Field","name":{"kind":"Name","value":"createIssueLabelID"}}]}}]}}]} as unknown as DocumentNode<RepositoryConstantsQuery, RepositoryConstantsQueryVariables>;
-export const CommentDetail = gql`
-    fragment commentDetail on Comment {
+export const KitFeedback_CommentDetailFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"KitFeedback_commentDetail"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"KitFeedback_Comment"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"isMinimized"}},{"kind":"Field","name":{"kind":"Name","value":"isPublic"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"author"}},{"kind":"Field","name":{"kind":"Name","value":"body"}},{"kind":"Field","name":{"kind":"Name","value":"bodyHTML"}}]}}]} as unknown as DocumentNode<KitFeedback_CommentDetailFragment, unknown>;
+export const KitFeedback_IssueDetailFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"KitFeedback_issueDetail"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"KitFeedback_Issue"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"author"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"titleHTML"}},{"kind":"Field","name":{"kind":"Name","value":"bodyHTML"}},{"kind":"Field","name":{"kind":"Name","value":"comments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"next"}},{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"KitFeedback_commentDetail"}}]}}]}}]}},...KitFeedback_CommentDetailFragmentDoc.definitions]} as unknown as DocumentNode<KitFeedback_IssueDetailFragment, unknown>;
+export const KitFeedback_IssuePreviewFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"KitFeedback_issuePreview"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"KitFeedback_Issue"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"number"}},{"kind":"Field","name":{"kind":"Name","value":"titleHTML"}},{"kind":"Field","name":{"kind":"Name","value":"metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"KitFeedback_commentDetail"}}]}}]}},...KitFeedback_CommentDetailFragmentDoc.definitions]} as unknown as DocumentNode<KitFeedback_IssuePreviewFragment, unknown>;
+export const KitFeedback_IssueTemplateDetailFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"KitFeedback_issueTemplateDetail"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"KitFeedback_IssueTemplate"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"body"}}]}}]} as unknown as DocumentNode<KitFeedback_IssueTemplateDetailFragment, unknown>;
+export const KitFeedback_MilestonePreviewFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"KitFeedback_milestonePreview"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"KitFeedback_Milestone"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"number"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]} as unknown as DocumentNode<KitFeedback_MilestonePreviewFragment, unknown>;
+export const KitFeedbackCreateCommentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"KitFeedbackCreateComment"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fields"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"KitFeedback_CreateCommentFields"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"KitFeedback_createComment"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fields"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fields"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"KitFeedback_commentDetail"}}]}}]}},...KitFeedback_CommentDetailFragmentDoc.definitions]} as unknown as DocumentNode<KitFeedbackCreateCommentMutation, KitFeedbackCreateCommentMutationVariables>;
+export const KitFeedbackAddReactionDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"KitFeedbackAddReaction"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fields"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"KitFeedback_AddReactionFields"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"KitFeedback_addReaction"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fields"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fields"}}}]}]}}]} as unknown as DocumentNode<KitFeedbackAddReactionMutation, KitFeedbackAddReactionMutationVariables>;
+export const KitFeedbackCreateIssueDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"KitFeedbackCreateIssue"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fields"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"KitFeedback_CreateIssueFields"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"KitFeedback_createIssue"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fields"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fields"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"KitFeedback_issuePreview"}}]}}]}},...KitFeedback_IssuePreviewFragmentDoc.definitions]} as unknown as DocumentNode<KitFeedbackCreateIssueMutation, KitFeedbackCreateIssueMutationVariables>;
+export const KitFeedbackMinimizeCommentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"KitFeedbackMinimizeComment"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fields"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"KitFeedback_MinimizeCommentFields"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"KitFeedback_minimizeComment"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fields"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fields"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"KitFeedback_commentDetail"}}]}}]}},...KitFeedback_CommentDetailFragmentDoc.definitions]} as unknown as DocumentNode<KitFeedbackMinimizeCommentMutation, KitFeedbackMinimizeCommentMutationVariables>;
+export const KitFeedbackUpdateCommentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"KitFeedbackUpdateComment"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fields"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"KitFeedback_UpdateCommentFields"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"KitFeedback_updateComment"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fields"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fields"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"KitFeedback_commentDetail"}}]}}]}},...KitFeedback_CommentDetailFragmentDoc.definitions]} as unknown as DocumentNode<KitFeedbackUpdateCommentMutation, KitFeedbackUpdateCommentMutationVariables>;
+export const KitFeedbackIssueDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"KitFeedbackIssue"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"number"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"KitFeedback_issue"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"number"},"value":{"kind":"Variable","name":{"kind":"Name","value":"number"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"KitFeedback_issueDetail"}}]}}]}},...KitFeedback_IssueDetailFragmentDoc.definitions]} as unknown as DocumentNode<KitFeedbackIssueQuery, KitFeedbackIssueQueryVariables>;
+export const KitFeedbackIssueTemplateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"KitFeedbackIssueTemplate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"KitFeedback_issueTemplate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"KitFeedback_issueTemplateDetail"}}]}}]}},...KitFeedback_IssueTemplateDetailFragmentDoc.definitions]} as unknown as DocumentNode<KitFeedbackIssueTemplateQuery, KitFeedbackIssueTemplateQueryVariables>;
+export const KitFeedbackIssuesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"KitFeedbackIssues"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filters"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"KitFeedback_IssueFilters"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"pagination"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"KitFeedback_Pagination"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"KitFeedback_issues"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filters"}}},{"kind":"Argument","name":{"kind":"Name","value":"pagination"},"value":{"kind":"Variable","name":{"kind":"Name","value":"pagination"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"KitFeedback_issuePreview"}}]}},{"kind":"Field","name":{"kind":"Name","value":"next"}}]}}]}},...KitFeedback_IssuePreviewFragmentDoc.definitions]} as unknown as DocumentNode<KitFeedbackIssuesQuery, KitFeedbackIssuesQueryVariables>;
+export const KitFeedbackMilestonesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"KitFeedbackMilestones"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filters"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"KitFeedback_MilestoneFilters"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"pagination"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"KitFeedback_Pagination"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"KitFeedback_milestones"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filters"}}},{"kind":"Argument","name":{"kind":"Name","value":"pagination"},"value":{"kind":"Variable","name":{"kind":"Name","value":"pagination"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"KitFeedback_milestonePreview"}}]}},{"kind":"Field","name":{"kind":"Name","value":"next"}}]}}]}},...KitFeedback_MilestonePreviewFragmentDoc.definitions]} as unknown as DocumentNode<KitFeedbackMilestonesQuery, KitFeedbackMilestonesQueryVariables>;
+export const KitFeedback_CommentDetail = gql`
+    fragment KitFeedback_commentDetail on KitFeedback_Comment {
   id
   isMinimized
   isPublic
@@ -326,8 +313,8 @@ export const CommentDetail = gql`
   bodyHTML
 }
     `;
-export const IssueDetail = gql`
-    fragment issueDetail on Issue {
+export const KitFeedback_IssueDetail = gql`
+    fragment KitFeedback_issueDetail on KitFeedback_Issue {
   id
   author
   createdAt
@@ -336,107 +323,99 @@ export const IssueDetail = gql`
   comments {
     next
     nodes {
-      ...commentDetail
+      ...KitFeedback_commentDetail
     }
   }
 }
-    ${CommentDetail}`;
-export const IssuePreview = gql`
-    fragment issuePreview on Issue {
+    ${KitFeedback_CommentDetail}`;
+export const KitFeedback_IssuePreview = gql`
+    fragment KitFeedback_issuePreview on KitFeedback_Issue {
   id
   number
   titleHTML
   metadata {
-    ...commentDetail
+    ...KitFeedback_commentDetail
   }
 }
-    ${CommentDetail}`;
-export const IssueTemplateDetail = gql`
-    fragment issueTemplateDetail on IssueTemplate {
+    ${KitFeedback_CommentDetail}`;
+export const KitFeedback_IssueTemplateDetail = gql`
+    fragment KitFeedback_issueTemplateDetail on KitFeedback_IssueTemplate {
   name
   title
   body
 }
     `;
-export const MilestonePreview = gql`
-    fragment milestonePreview on Milestone {
+export const KitFeedback_MilestonePreview = gql`
+    fragment KitFeedback_milestonePreview on KitFeedback_Milestone {
   id
   number
   title
 }
     `;
-export const CreateComment = gql`
-    mutation CreateComment($fields: CreateCommentFields!) {
-  createComment(fields: $fields) {
-    ...commentDetail
+export const KitFeedbackCreateComment = gql`
+    mutation KitFeedbackCreateComment($fields: KitFeedback_CreateCommentFields!) {
+  KitFeedback_createComment(fields: $fields) {
+    ...KitFeedback_commentDetail
   }
 }
-    ${CommentDetail}`;
-export const AddReaction = gql`
-    mutation AddReaction($fields: AddReactionFields!) {
-  addReaction(fields: $fields)
+    ${KitFeedback_CommentDetail}`;
+export const KitFeedbackAddReaction = gql`
+    mutation KitFeedbackAddReaction($fields: KitFeedback_AddReactionFields!) {
+  KitFeedback_addReaction(fields: $fields)
 }
     `;
-export const CreateIssue = gql`
-    mutation CreateIssue($fields: CreateIssueFields!) {
-  createIssue(fields: $fields) {
-    ...issuePreview
+export const KitFeedbackCreateIssue = gql`
+    mutation KitFeedbackCreateIssue($fields: KitFeedback_CreateIssueFields!) {
+  KitFeedback_createIssue(fields: $fields) {
+    ...KitFeedback_issuePreview
   }
 }
-    ${IssuePreview}`;
-export const MinimizeComment = gql`
-    mutation MinimizeComment($fields: MinimizeCommentFields!) {
-  minimizeComment(fields: $fields) {
-    ...commentDetail
+    ${KitFeedback_IssuePreview}`;
+export const KitFeedbackMinimizeComment = gql`
+    mutation KitFeedbackMinimizeComment($fields: KitFeedback_MinimizeCommentFields!) {
+  KitFeedback_minimizeComment(fields: $fields) {
+    ...KitFeedback_commentDetail
   }
 }
-    ${CommentDetail}`;
-export const UpdateComment = gql`
-    mutation UpdateComment($fields: UpdateCommentFields!) {
-  updateComment(fields: $fields) {
-    ...commentDetail
+    ${KitFeedback_CommentDetail}`;
+export const KitFeedbackUpdateComment = gql`
+    mutation KitFeedbackUpdateComment($fields: KitFeedback_UpdateCommentFields!) {
+  KitFeedback_updateComment(fields: $fields) {
+    ...KitFeedback_commentDetail
   }
 }
-    ${CommentDetail}`;
-export const Issue = gql`
-    query Issue($number: Int!) {
-  issue(number: $number) {
-    ...issueDetail
+    ${KitFeedback_CommentDetail}`;
+export const KitFeedbackIssue = gql`
+    query KitFeedbackIssue($number: Int!) {
+  KitFeedback_issue(number: $number) {
+    ...KitFeedback_issueDetail
   }
 }
-    ${IssueDetail}`;
-export const IssueTemplate = gql`
-    query IssueTemplate($name: String!) {
-  issueTemplate(name: $name) {
-    ...issueTemplateDetail
+    ${KitFeedback_IssueDetail}`;
+export const KitFeedbackIssueTemplate = gql`
+    query KitFeedbackIssueTemplate($name: String!) {
+  KitFeedback_issueTemplate(name: $name) {
+    ...KitFeedback_issueTemplateDetail
   }
 }
-    ${IssueTemplateDetail}`;
-export const Issues = gql`
-    query Issues($filters: IssueFilters, $pagination: Pagination!) {
-  issues(filters: $filters, pagination: $pagination) {
+    ${KitFeedback_IssueTemplateDetail}`;
+export const KitFeedbackIssues = gql`
+    query KitFeedbackIssues($filters: KitFeedback_IssueFilters, $pagination: KitFeedback_Pagination!) {
+  KitFeedback_issues(filters: $filters, pagination: $pagination) {
     nodes {
-      ...issuePreview
+      ...KitFeedback_issuePreview
     }
     next
   }
 }
-    ${IssuePreview}`;
-export const Milestones = gql`
-    query Milestones($filters: MilestoneFilters!, $pagination: Pagination!) {
-  milestones(filters: $filters, pagination: $pagination) {
+    ${KitFeedback_IssuePreview}`;
+export const KitFeedbackMilestones = gql`
+    query KitFeedbackMilestones($filters: KitFeedback_MilestoneFilters!, $pagination: KitFeedback_Pagination!) {
+  KitFeedback_milestones(filters: $filters, pagination: $pagination) {
     nodes {
-      ...milestonePreview
+      ...KitFeedback_milestonePreview
     }
     next
   }
 }
-    ${MilestonePreview}`;
-export const RepositoryConstants = gql`
-    query RepositoryConstants {
-  repositoryConstants {
-    repositoryID
-    createIssueLabelID
-  }
-}
-    `;
+    ${KitFeedback_MilestonePreview}`;

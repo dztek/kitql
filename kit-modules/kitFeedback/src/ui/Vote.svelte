@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { config } from '../utils/config';
-	import { KQL_Issue, KQL_UpdateComment } from '$lib/graphql/_kitql/graphqlStores';
+	import {
+		KQL_KitFeedbackIssue,
+		KQL_KitFeedbackUpdateComment
+	} from '$lib/graphql/_kitql/graphqlStores';
 	import type { Reaction } from '$lib/graphql/_kitql/graphqlTypes';
 	// import { resolveTheme, theme } from '$lib/theme';
 	import type { Class } from '../utils/theme';
@@ -32,7 +35,7 @@
 		} else {
 			newMetadata.votes[type] = [...metadata.votes[type], identifier];
 		}
-		await KQL_UpdateComment.mutate({
+		await KQL_KitFeedbackUpdateComment.mutate({
 			variables: {
 				fields: {
 					commentID: metadataCommentId,
@@ -40,7 +43,7 @@
 				}
 			}
 		});
-		await KQL_Issue.query({ settings: { policy: 'network-only' } });
+		await KQL_KitFeedbackIssue.query({ settings: { policy: 'network-only' } });
 	};
 </script>
 

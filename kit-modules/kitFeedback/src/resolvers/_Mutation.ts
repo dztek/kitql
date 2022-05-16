@@ -1,22 +1,24 @@
-import type { Comment, Issue } from '$graphql/_kitql/graphqlTypes';
-import { KitFeedbackConfigIT, RepositoryIdIT } from '..';
+import { KitFeedbackConfigIT } from '..';
 import { resolveGithubComment, resolveGithubIssuePreview } from '../helpers/helperGithub';
 import { DbGithub } from '../providers/DbGithub';
 import type { KitFeedbackModule } from '../_kitql/moduleTypes';
 
 export const resolvers: KitFeedbackModule.Resolvers = {
 	Mutation: {
-		createComment: async (_root, args, ctx, _info) => {
+		KitFeedback_createComment: async (_root, args, ctx, _info) => {
 			const Github = ctx.injector.get(DbGithub);
 			const config = ctx.injector.get(KitFeedbackConfigIT);
 			const data = await Github.createComment({
 				subjectId: args.fields.issueID,
 				body: args.fields.body
 			});
-			const comment: Comment = resolveGithubComment(data?.addComment?.commentEdge?.node, config);
+			const comment: KitFeedbackModule.KitFeedback_Comment = resolveGithubComment(
+				data?.addComment?.commentEdge?.node,
+				config
+			);
 			return comment;
 		},
-		addReaction: async (_root, args, ctx, _info) => {
+		KitFeedback_addReaction: async (_root, args, ctx, _info) => {
 			const Github = ctx.injector.get(DbGithub);
 			const data = await Github.addReaction({
 				subjectId: args.fields.subjectID,
@@ -24,7 +26,7 @@ export const resolvers: KitFeedbackModule.Resolvers = {
 			});
 			return data?.addReaction ? 1 : 0;
 		},
-		createIssue: async (_root, args, ctx, _info) => {
+		KitFeedback_createIssue: async (_root, args, ctx, _info) => {
 			const Github = ctx.injector.get(DbGithub);
 			const config = ctx.injector.get(KitFeedbackConfigIT);
 			const data = await Github.createIssue({
@@ -35,10 +37,10 @@ export const resolvers: KitFeedbackModule.Resolvers = {
 				body: args.fields.body
 			});
 			const issue = data?.createIssue?.issue;
-			const result: Issue = resolveGithubIssuePreview(issue, config);
+			const result: KitFeedbackModule.KitFeedback_Issue = resolveGithubIssuePreview(issue, config);
 			return result;
 		},
-		minimizeComment: async (_root, args, ctx, _info) => {
+		KitFeedback_minimizeComment: async (_root, args, ctx, _info) => {
 			const Github = ctx.injector.get(DbGithub);
 			const config = ctx.injector.get(KitFeedbackConfigIT);
 			const data = await Github.minimizeComment({
@@ -46,10 +48,10 @@ export const resolvers: KitFeedbackModule.Resolvers = {
 				classifier: 'OFF_TOPIC'
 			});
 			const comment = data?.minimizeComment?.minimizedComment;
-			const result: Comment = resolveGithubComment(comment, config);
+			const result: KitFeedbackModule.KitFeedback_Comment = resolveGithubComment(comment, config);
 			return result;
 		},
-		updateComment: async (_root, args, ctx, _info) => {
+		KitFeedback_updateComment: async (_root, args, ctx, _info) => {
 			const Github = ctx.injector.get(DbGithub);
 			const config = ctx.injector.get(KitFeedbackConfigIT);
 			const data = await Github.updateComment({
@@ -57,7 +59,7 @@ export const resolvers: KitFeedbackModule.Resolvers = {
 				body: args.fields.body
 			});
 			const comment = data?.updateIssueComment?.issueComment;
-			const result: Comment = resolveGithubComment(comment, config);
+			const result: KitFeedbackModule.KitFeedback_Comment = resolveGithubComment(comment, config);
 			return result;
 		}
 	}

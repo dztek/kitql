@@ -1,4 +1,4 @@
-input Pagination {
+input KitFeedback_Pagination {
 	take: Int!
 	cursor: String
 }

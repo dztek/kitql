@@ -1,5 +1,5 @@
-mutation CreateComment($fields: CreateCommentFields!) {
-	createComment(fields: $fields) {
-		...commentDetail
+mutation KitFeedbackCreateComment($fields: KitFeedback_CreateCommentFields!) {
+	KitFeedback_createComment(fields: $fields) {
+		...KitFeedback_commentDetail
 	}
 }

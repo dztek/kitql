@@ -1,11 +1,16 @@
-import type { Comment, Comments, Issue, Milestone } from '$graphql/_kitql/graphqlTypes';
+import type {
+	KitFeedback_Comment,
+	KitFeedback_Comments,
+	KitFeedback_Issue,
+	KitFeedback_Milestone
+} from '$graphql/_kitql/graphqlTypes';
 import type { KitFeedbackConfig } from '../utils/config';
 
 export const resolveGithubMilestone = (
 	milestone: Record<string, any>,
 	config: KitFeedbackConfig
 ) => {
-	const result: Milestone = {
+	const result: KitFeedback_Milestone = {
 		id: milestone.id,
 		number: milestone.number,
 		title: milestone.title
@@ -14,12 +19,12 @@ export const resolveGithubMilestone = (
 };
 
 export const resolveGithubIssue = (issue: Record<string, any>, config: KitFeedbackConfig) => {
-	const comments: Comments = {
+	const comments: KitFeedback_Comments = {
 		nodes: issue.comments.nodes.map((comment) => resolveGithubComment(comment, config)),
 		next: issue.comments.pageInfo.endCursor
 	};
 
-	const result: Issue = {
+	const result: KitFeedback_Issue = {
 		id: issue?.id,
 		author: issue?.author?.login,
 		createdAt: issue?.createdAt,
@@ -36,7 +41,7 @@ export const resolveGithubIssuePreview = (
 	config: KitFeedbackConfig
 ) => {
 	const comments = issue.comments.nodes;
-	const result: Issue = {
+	const result: KitFeedback_Issue = {
 		id: issue.id,
 		number: issue.number,
 		titleHTML: issue?.titleHTML,
@@ -46,7 +51,7 @@ export const resolveGithubIssuePreview = (
 };
 
 export const resolveGithubComment = (comment: Record<string, any>, config: KitFeedbackConfig) => {
-	const result: Comment = {
+	const result: KitFeedback_Comment = {
 		id: comment?.id,
 		isMinimized: comment?.isMinimized,
 		isPublic: resolveGithubCommentIsPublic(comment, config),

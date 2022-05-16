@@ -1,5 +1,5 @@
-mutation CreateIssue($fields: CreateIssueFields!) {
-	createIssue(fields: $fields) {
-		...issuePreview
+mutation KitFeedbackCreateIssue($fields: KitFeedback_CreateIssueFields!) {
+	KitFeedback_createIssue(fields: $fields) {
+		...KitFeedback_issuePreview
 	}
 }

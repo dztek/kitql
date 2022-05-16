@@ -1,4 +1,4 @@
-fragment issueDetail on Issue {
+fragment KitFeedback_issueDetail on KitFeedback_Issue {
 	id
 	author
 	createdAt
@@ -7,7 +7,7 @@ fragment issueDetail on Issue {
 	comments {
 		next
 		nodes {
-			...commentDetail
+			...KitFeedback_commentDetail
 		}
 	}
 }

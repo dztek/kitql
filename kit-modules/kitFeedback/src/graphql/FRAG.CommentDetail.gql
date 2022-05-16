@@ -1,4 +1,4 @@
-fragment commentDetail on Comment {
+fragment KitFeedback_commentDetail on KitFeedback_Comment {
 	id
 	isMinimized
 	isPublic

@@ -5,11 +5,12 @@ import { createServer } from '@graphql-yoga/common';
 import type { Application } from 'graphql-modules';
 import { createApplication } from 'graphql-modules';
 import { modules } from './_kitql/_appModules';
+import { kitFeedbackModule } from '$kitFeedback';
 
 const plugins = [
 	useGraphQLModules(
 		createApplication({
-			modules
+			modules: [...modules, kitFeedbackModule]
 		})
 	),
 	useGraphQlJit(),

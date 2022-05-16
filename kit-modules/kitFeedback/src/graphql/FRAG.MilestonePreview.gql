@@ -1,4 +1,4 @@
-fragment milestonePreview on Milestone {
+fragment KitFeedback_milestonePreview on KitFeedback_Milestone {
 	id
 	number
 	title

@@ -9,7 +9,7 @@ const __dirname = dirname(__filename);
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	preprocess: [preprocess({ postcss: true })],
+	preprocess: [ preprocess({ postcss: true }) ],
 	kit: {
 		adapter: adapter(),
 		vite: {
@@ -17,13 +17,19 @@ const config = {
 				alias: {
 					$lib: resolve(__dirname, './src/lib'),
 					$graphql: resolve(__dirname, './src/lib/graphql'),
-					$modules: resolve(__dirname, './src/lib/modules')
+					$modules: resolve(__dirname, './src/lib/modules'),
+					$kitFeedback: resolve(__dirname, '../../kit-modules/kitFeedback/dist')
 				}
 			},
-			optimizeDeps: {
-				include: ['dataloader']
+			server: {
+				fs: {
+					allow: [ '..' ],
+				},
 			},
-			plugins: [watchAndRun([{ watch: '**/*.(gql|graphql)', run: 'yarn gen' }])]
+			optimizeDeps: {
+				include: [ 'dataloader' ]
+			},
+			plugins: [ watchAndRun([ { watch: '**/*.(gql|graphql)', run: 'yarn gen' } ]) ]
 		},
 		package: {
 			dir: 'dist',

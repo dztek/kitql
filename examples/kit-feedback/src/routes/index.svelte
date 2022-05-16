@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
-	import { config } from '$modules/kitFeedback/utils/config';
-	import Feedback from '$modules/kitFeedback/ui/Feedback.svelte';
+	import { config } from '$kitFeedback/utils/config';
+	import Feedback from '$kitFeedback/ui/Feedback.svelte';
 	import type { Reaction } from '$lib/graphql/_kitql/graphqlTypes';
 </script>
 

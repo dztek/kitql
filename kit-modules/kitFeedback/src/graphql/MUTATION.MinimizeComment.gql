@@ -1,5 +1,5 @@
-mutation MinimizeComment($fields: MinimizeCommentFields!) {
-	minimizeComment(fields: $fields) {
-		...commentDetail
+mutation KitFeedbackMinimizeComment($fields: KitFeedback_MinimizeCommentFields!) {
+	KitFeedback_minimizeComment(fields: $fields) {
+		...KitFeedback_commentDetail
 	}
 }

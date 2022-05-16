@@ -1,4 +1,4 @@
-enum Reaction {
+enum KitFeedback_Reaction {
 	CONFUSED
 	EYES
 	HEART

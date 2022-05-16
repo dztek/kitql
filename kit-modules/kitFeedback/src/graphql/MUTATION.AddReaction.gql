@@ -1,3 +1,3 @@
-mutation AddReaction($fields: AddReactionFields!) {
-	addReaction(fields: $fields)
+mutation KitFeedbackAddReaction($fields: KitFeedback_AddReactionFields!) {
+	KitFeedback_addReaction(fields: $fields)
 }

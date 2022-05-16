@@ -1,27 +1,27 @@
-type Issue {
+type KitFeedback_Issue {
 	id: ID
 	number: Int
 	author: String
 	createdAt: DateTime
 	titleHTML: String
 	bodyHTML: String
-	metadata: Comment
-	comments: Comments
+	metadata: KitFeedback_Comment
+	comments: KitFeedback_Comments
 }
 
-type Issues {
-	nodes: [Issue!]
+type KitFeedback_Issues {
+	nodes: [KitFeedback_Issue!]
 	next: String
 }
 
-input CreateIssueFields {
+input KitFeedback_CreateIssueFields {
 	milestoneId: ID
 	title: String!
 	body: String
 }
 
-input IssueFilters {
+input KitFeedback_IssueFilters {
 	labels: [String]
 	milestoneNumber: String
-	states: [IssueState]
+	states: [KitFeedback_IssueState]
 }

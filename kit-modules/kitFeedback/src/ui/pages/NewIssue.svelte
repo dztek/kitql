@@ -1,18 +1,17 @@
 <script lang="ts">
 	import { browser } from '$app/env';
-
 	import {
-		KQL_CreateComment,
-		KQL_CreateIssue,
-		KQL_Issues,
-		KQL_IssueTemplate,
-		KQL_MinimizeComment
+		KQL_KitFeedbackCreateComment,
+		KQL_KitFeedbackCreateIssue,
+		KQL_KitFeedbackIssues,
+		KQL_KitFeedbackIssueTemplate,
+		KQL_KitFeedbackMinimizeComment
 	} from '$lib/graphql/_kitql/graphqlStores';
-	import type { CreateIssueFields } from '$lib/graphql/_kitql/graphqlTypes';
+	import type { KitFeedback_CreateIssueFields } from '$lib/graphql/_kitql/graphqlTypes';
 	import { validator } from '@felte/validator-vest';
 	import { createForm } from 'felte';
 	import { create, enforce, test } from 'vest';
-	import { config, createIssueLabelId, repositoryId } from '../../utils/config';
+	import { config, repositoryId } from '../../utils/config';
 	import { router } from '../../utils/routes';
 	import { resolveTheme, theme } from '../../utils/theme';
 	import type { CommentMetadata } from '../../utils/types';
@@ -20,7 +19,7 @@
 	export let milestoneId: string = undefined;
 	export let milestoneTitle: string = undefined;
 
-	let initialValues: CreateIssueFields;
+	let initialValues: KitFeedback_CreateIssueFields;
 	$: initialValues = {
 		title: '',
 		body: '',
@@ -30,14 +29,14 @@
 
 	$: browser &&
 		milestoneId &&
-		KQL_IssueTemplate.query({
+		KQL_KitFeedbackIssueTemplate.query({
 			variables: {
 				name: $config.issues?.create?.templates?.[milestoneTitle]
 			}
 		});
 
-	$: console.log(`$KQL_IssueTemplate.data`, $KQL_IssueTemplate.data);
-	const suite = create('form', (data: CreateIssueFields) => {
+	$: console.log(`$KQL_KitFeedbackIssueTemplate.data`, $KQL_KitFeedbackIssueTemplate.data);
+	const suite = create('form', (data: KitFeedback_CreateIssueFields) => {
 		test('title', 'Le titre ne peut pas être vide.', () => {
 			enforce(data.title).isNotEmpty();
 		});
@@ -46,7 +45,7 @@
 	$: ({ form } = createForm({
 		initialValues,
 		extend: validator({ suite }),
-		onSubmit: async (values: CreateIssueFields) => {
+		onSubmit: async (values: KitFeedback_CreateIssueFields) => {
 			const identifier = $config.identifier();
 			const metadata: CommentMetadata = {
 				author: $config.dev ? $config.staff?.members?.[identifier] : identifier ?? 'Unknown author',
@@ -57,7 +56,7 @@
 				...($config.issues?.create?.metadata?.() ?? {})
 			};
 
-			await KQL_CreateIssue.mutate({
+			await KQL_KitFeedbackCreateIssue.mutate({
 				variables: {
 					fields: {
 						title: values.title,
@@ -66,24 +65,24 @@
 					}
 				}
 			});
-			await KQL_CreateComment.mutate({
+			await KQL_KitFeedbackCreateComment.mutate({
 				variables: {
 					fields: {
-						issueID: $KQL_CreateIssue.data?.createIssue?.id,
+						issueID: $KQL_KitFeedbackCreateIssue.data?.createIssue?.id,
 						body: JSON.stringify(metadata)
 					}
 				}
 			});
-			await KQL_MinimizeComment.mutate({
+			await KQL_KitFeedbackMinimizeComment.mutate({
 				variables: {
 					fields: {
-						commentID: $KQL_CreateComment.data?.createComment?.id
+						commentID: $KQL_KitFeedbackCreateComment.data?.createComment?.id
 					}
 				}
 			});
 
-			KQL_Issues.resetCache();
-			router.goto('ISSUE', { number: $KQL_CreateIssue.data?.createIssue?.number }, true);
+			KQL_KitFeedbackIssues.resetCache();
+			router.goto('ISSUE', { number: $KQL_KitFeedbackCreateIssue.data?.createIssue?.number }, true);
 		}
 	}));
 

@@ -9,11 +9,14 @@
 	},
 	"scripts": {
 		"gen:style": "npx tailwindcss -c ./tailwind.config.cjs -o ./dist/app.postcss --minify",
-		"package": "rm -rf ./dist && mkdir ./dist && cp ./src/* ./dist -r && cp ./package.json ./dist/package.json"
+		"package": "rm -rf ./dist && mkdir ./dist && cp ./src/* ./dist -r && cp ./package.json ./dist/package.json && cp ./tsconfig.json ./dist/tsconfig.json"
 	},
-	"devDependencies": {},
+	"devDependencies": {
+		"graphql-modules": "^2.0.0"
+	},
 	"dependencies": {
 		"@felte/validator-vest": "^1.0.6",
+		"@iconify/svelte": "^2.2.1",
 		"felte": "^1.1.7",
 		"reflect-metadata": "^0.1.13",
 		"vest": "^4.3.3"

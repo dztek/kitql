@@ -3,17 +3,20 @@
 	import CommentCrud from '../comments/COMMENT_Crud.svelte';
 	import CommentDetail from '../comments/COMMENT_Detail.svelte';
 	import { config, type KitFeedbackConfig } from '../../utils/config';
-	import { KQL_Issue } from '$lib/graphql/_kitql/graphqlStores';
+	import { KQL_KitFeedbackIssue } from '$lib/graphql/_kitql/graphqlStores';
 	import Icon from '@iconify/svelte';
 	import { resolveTheme, theme } from '../../utils/theme';
 	import type { Comment as TComment, CommentMetadata } from '../../utils/types';
-	import type { IssueDetailFragment } from '$lib/graphql/_kitql/graphqlTypes';
+	import type { KitFeedback_IssueDetailFragment } from '$lib/graphql/_kitql/graphqlTypes';
 
 	export let number: number;
 
-	$: browser && KQL_Issue.query({ variables: { number } });
+	$: browser && KQL_KitFeedbackIssue.query({ variables: { number } });
 
-	const parseDescription = (issue: IssueDetailFragment, config: KitFeedbackConfig): TComment => {
+	const parseDescription = (
+		issue: KitFeedback_IssueDetailFragment,
+		config: KitFeedbackConfig
+	): TComment => {
 		const firstComment = issue?.comments?.nodes?.[0];
 		let metadata: CommentMetadata;
 		let metadataCommentId: string;
@@ -41,10 +44,10 @@
 		};
 	};
 
-	$: issue = $KQL_Issue.data?.issue;
+	$: issue = $KQL_KitFeedbackIssue.data?.issue;
 </script>
 
-{#if $KQL_Issue.status === 'LOADING'}
+{#if $KQL_KitFeedbackIssue.status === 'LOADING'}
 	<Icon icon="eos-icons:loading" />
 {:else}
 	<div class={resolveTheme($theme, 'issue')}>

@@ -1,4 +1,4 @@
-import type { Reaction } from '$graphql/_kitql/graphqlTypes';
+import type { KitFeedback_Reaction } from '$graphql/_kitql/graphqlTypes';
 import { writable, type Writable } from 'svelte/store';
 import type { Route } from './routes';
 import { overridable, type Overridable } from './types';
@@ -60,7 +60,7 @@ export type KitFeedbackConfig = {
 		};
 		pagination?: number;
 		comments?: {
-			reactionFilter?: Reaction;
+			reactionFilter?: KitFeedback_Reaction;
 			create?: {
 				placeholder?: string;
 			};

@@ -2,10 +2,10 @@
 	import { config } from '../../utils/config';
 
 	import {
-		KQL_AddReaction,
-		KQL_CreateComment,
-		KQL_Issue,
-		KQL_MinimizeComment
+		KQL_KitFeedbackAddReaction,
+		KQL_KitFeedbackCreateComment,
+		KQL_KitFeedbackIssue,
+		KQL_KitFeedbackMinimizeComment
 	} from '$lib/graphql/_kitql/graphqlStores';
 	import { resolveTheme, theme } from '../../utils/theme';
 	import type { CommentMetadata } from '../../utils/types';
@@ -37,7 +37,7 @@
 					down: []
 				}
 			};
-			await KQL_CreateComment.mutate({
+			await KQL_KitFeedbackCreateComment.mutate({
 				variables: {
 					fields: {
 						issueID: issue.id,
@@ -45,15 +45,15 @@
 					}
 				}
 			});
-			await KQL_AddReaction.mutate({
+			await KQL_KitFeedbackAddReaction.mutate({
 				variables: {
 					fields: {
-						subjectID: $KQL_CreateComment.data?.createComment.id,
+						subjectID: $KQL_KitFeedbackCreateComment.data?.createComment.id,
 						content: $config.issues?.comments?.reactionFilter
 					}
 				}
 			});
-			await KQL_CreateComment.mutate({
+			await KQL_KitFeedbackCreateComment.mutate({
 				variables: {
 					fields: {
 						issueID: issue.id,
@@ -61,22 +61,22 @@
 					}
 				}
 			});
-			await KQL_MinimizeComment.mutate({
+			await KQL_KitFeedbackMinimizeComment.mutate({
 				variables: {
 					fields: {
-						commentID: $KQL_CreateComment.data.createComment.id
+						commentID: $KQL_KitFeedbackCreateComment.data.createComment.id
 					}
 				}
 			});
-			await KQL_Issue.query({ settings: { policy: 'network-only' } });
+			await KQL_KitFeedbackIssue.query({ settings: { policy: 'network-only' } });
 		}
 	});
 
 	$: isLoading =
-		$KQL_CreateComment.status === 'LOADING' ||
-		$KQL_AddReaction.status === 'LOADING' ||
-		$KQL_MinimizeComment.status === 'LOADING' ||
-		$KQL_Issue.status === 'LOADING';
+		$KQL_KitFeedbackCreateComment.status === 'LOADING' ||
+		$KQL_KitFeedbackAddReaction.status === 'LOADING' ||
+		$KQL_KitFeedbackMinimizeComment.status === 'LOADING' ||
+		$KQL_KitFeedbackIssue.status === 'LOADING';
 </script>
 
 <form use:form class={resolveTheme($theme, 'create-comment')}>

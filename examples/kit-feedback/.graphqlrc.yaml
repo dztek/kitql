@@ -1,7 +1,12 @@
 schema:
   - './src/lib/modules/**/typedefs/*.graphql'
+  # - './node_modules/@kitql/kit-feedback/typedefs/*.graphql'
+  - '../../kit-modules/kitFeedback/**/typedefs/*.graphql'
 documents:
   - './src/lib/modules/**/graphql/*.gql'
+  # - './node_modules/@kitql/kit-feedback/graphql/*.gql'
+  - '../../kit-modules/kitFeedback/**/graphql/*.gql'
+
 extensions:
   endpoints:
     default:
@@ -27,9 +32,9 @@ extensions:
           importBaseTypesFrom: $graphql/_kitql/graphqlTypes
           filename: _kitql/moduleTypes.ts
         schema:
-          - '**/typedefs/*.gql'
+          #   - '**/typedefs/*.gql'
         documents:
-          - '**/graphql/*.gql'
+        #   - '**/graphql/*.gql'
         plugins:
           - typescript
           - typescript-resolvers

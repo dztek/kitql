@@ -1,15 +1,15 @@
-type Milestone {
+type KitFeedback_Milestone {
 	id: ID!
 	title: String!
 	number: Int
 	description: String
 }
 
-type Milestones {
-	nodes: [Milestone]
+type KitFeedback_Milestones {
+	nodes: [KitFeedback_Milestone]
 	next: String
 }
 
-input MilestoneFilters {
+input KitFeedback_MilestoneFilters {
 	title: String
 }

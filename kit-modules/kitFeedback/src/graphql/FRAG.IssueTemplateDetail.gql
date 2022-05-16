@@ -1,4 +1,4 @@
-fragment issueTemplateDetail on IssueTemplate {
+fragment KitFeedback_issueTemplateDetail on KitFeedback_IssueTemplate {
 	name
 	title
 	body

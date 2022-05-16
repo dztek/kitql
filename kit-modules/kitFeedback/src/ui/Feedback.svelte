@@ -1,16 +1,15 @@
 <script lang="ts">
 	import { browser } from '$app/env';
 	import {
-		KQL_Issue,
-		KQL_Issues,
-		KQL_Milestones,
-		KQL_RepositoryConstants
+		KQL_KitFeedbackIssue,
+		KQL_KitFeedbackIssues,
+		KQL_KitFeedbackMilestones
 	} from '$lib/graphql/_kitql/graphqlStores';
 	import { RequestStatus } from '@kitql/client';
-	import './app.postcss';
-	import { config, createIssueLabelId, repositoryId } from '../utils/config';
-	import { theme, resolveTheme } from '../utils/theme';
+	import { config } from '../utils/config';
 	import { router, routes } from '../utils/routes';
+	import { resolveTheme, theme } from '../utils/theme';
+	import './app.postcss';
 	import Modal from './Modal.svelte';
 
 	export let showFeedback = false;
@@ -20,25 +19,17 @@
 			return;
 		}
 		if ($config.resetCacheOnClose) {
-			if ($KQL_Milestones.status === RequestStatus.DONE) {
-				await KQL_Milestones.query({ settings: { policy: 'network-only' } });
+			if ($KQL_KitFeedbackMilestones.status === RequestStatus.DONE) {
+				await KQL_KitFeedbackMilestones.query({ settings: { policy: 'network-only' } });
 			}
-			if ($KQL_Issues.status === RequestStatus.DONE) {
-				await KQL_Issues.query({ settings: { policy: 'network-only' } });
+			if ($KQL_KitFeedbackIssues.status === RequestStatus.DONE) {
+				await KQL_KitFeedbackIssues.query({ settings: { policy: 'network-only' } });
 			}
-			if ($KQL_Issue.status === RequestStatus.DONE) {
-				await KQL_Issue.query({ settings: { policy: 'network-only' } });
+			if ($KQL_KitFeedbackIssue.status === RequestStatus.DONE) {
+				await KQL_KitFeedbackIssue.query({ settings: { policy: 'network-only' } });
 			}
 		}
 	};
-
-	const initialize = async () => {
-		// await KQL_RepositoryConstants.query();
-		// $repositoryId = $KQL_RepositoryConstants.data?.repositoryConstants?.repositoryID;
-		// $createIssueLabelId = $KQL_RepositoryConstants.data?.repositoryConstants?.createIssueLabelID;
-	};
-
-	// $: !$repositoryId && browser && initialize();
 </script>
 
 <div class="wrapper {resolveTheme($theme, 'wrapper')}">

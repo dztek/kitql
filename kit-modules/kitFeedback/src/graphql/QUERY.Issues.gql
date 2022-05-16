@@ -1,7 +1,7 @@
-query Issues($filters: IssueFilters, $pagination: Pagination!) {
-	issues(filters: $filters, pagination: $pagination) {
+query KitFeedbackIssues($filters: KitFeedback_IssueFilters, $pagination: KitFeedback_Pagination!) {
+	KitFeedback_issues(filters: $filters, pagination: $pagination) {
 		nodes {
-			...issuePreview
+			...KitFeedback_issuePreview
 		}
 		next
 	}
